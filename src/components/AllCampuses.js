@@ -1,11 +1,31 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
+import axios from 'axios'
 
-import { connect } from "react-redux"
-import { getAllCampuses } from "../redux/reducers"
+import { connect } from 'react-redux'
+import { getAllCampuses } from '../redux/reducers'
 
-import Campus from "./Campus"
+import Campus from './Campus'
 
 class AllCampuses extends Component {
+  constructor(props) {
+    super(props)
+    this.deleteCampus = this.deleteCampus.bind(this)
+  }
+
+  deleteCampus = (id) => {
+    if (!id) return
+
+    axios.delete(`http://localhost:8080/api/campuses/${id}`, {
+      data: {},
+    })
+
+    setTimeout(() => {
+      this.fetchAllCampuses()
+    }, 100)
+
+    console.log('Campus ID: ', this.props.id, ' deleted.')
+  }
+
   async componentDidMount() {
     await this.fetchAllCampuses()
   }
@@ -27,10 +47,12 @@ class AllCampuses extends Component {
           this.props.campuses.campuses.map((campus, index) => (
             <Campus
               key={index}
+              id={campus.id}
               campusname={campus.campusname}
               image={campus.image}
               address={campus.address}
               description={campus.description}
+              deleteCampus={this.deleteCampus}
             />
           ))
         ) : (
