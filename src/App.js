@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
 import Homepage from "./components/Homepage"
 import AllStudents from "./components/AllStudents"
+import StudentById from "./components/StudentById"
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Homepage} />
             <Route path="/allStudents" component={AllStudents} />
+            <Route path="/studentById" component={StudentById} />
           </Switch>
         </Router>
       </div>
