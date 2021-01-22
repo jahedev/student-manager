@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 
+import { Link } from "react-router-dom"
+
 import { connect } from "react-redux"
 import { getStudentById } from "../redux/reducers"
 
@@ -36,6 +38,9 @@ class StudentById extends Component {
   render() {
     return (
       <div>
+        <Link to="/">Return Home</Link>
+        <br />
+
         <h1>Student By Id Component</h1>
         <p>Search for a student by ID</p>
 
@@ -45,6 +50,7 @@ class StudentById extends Component {
             <input
               type="text"
               name="studentId"
+              placeholder="e.g. 1"
               onChange={(e) => this.handleChange(e)}
             />
           </label>

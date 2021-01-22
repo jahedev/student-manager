@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 
+import { Link } from "react-router-dom"
+
 import { connect } from "react-redux"
 import { getAllStudents } from "../redux/reducers"
 
@@ -21,6 +23,9 @@ class AllStudents extends Component {
   render() {
     return (
       <div>
+        <Link to="/">Return Home</Link>
+        <br />
+
         <h1>All Students Component</h1>
 
         {/* arrow function below resloves "props" being underfined in fetchAllStudents, before: this.fetchAllStudents */}
