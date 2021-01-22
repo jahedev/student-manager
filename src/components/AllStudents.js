@@ -17,7 +17,7 @@ class AllStudents extends Component {
     if (!id) return;
 
     axios.delete(`http://localhost:8080/api/students/${id}`, {
-      data: { answer: 42 },
+      data: {},
     });
 
     setTimeout(() => {
