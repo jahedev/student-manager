@@ -4,6 +4,7 @@ import { GOT_ALL_STUDENTS, GOT_STUDENT_BY_ID, GOT_ALL_CAMPUSES } from "./actionT
 
 const initialState = {
   students: [],
+  campuses: [],
 }
 
 const gotAllStudents = (data) => {
