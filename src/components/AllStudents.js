@@ -15,7 +15,7 @@ class AllStudents extends Component {
     await this.props.getAllStudents()
     setTimeout(() => {
       console.log(this.props.students)
-    }, 10)
+    }, 200)
   }
 
   render() {

@@ -1,6 +1,6 @@
 import axios from "axios"
 
-import { GOT_ALL_STUDENTS, GOT_STUDENT_BY_ID } from "./actionTypes"
+import { GOT_ALL_STUDENTS, GOT_STUDENT_BY_ID, GOT_ALL_CAMPUSES } from "./actionTypes"
 
 const initialState = {
   students: [],
@@ -13,6 +13,24 @@ const gotAllStudents = (data) => {
   }
 }
 
+const gotAllCampuses = (data) => {
+  return{
+    type: GOT_ALL_CAMPUSES,
+    data,
+  }
+}
+
+export const getAllCampuses = () => {
+  return async (dispatch) => {
+    try{
+      const response = await axios.get("http://localhost:8080/api/campuses/")
+      console.log("getAllCampuses axios response", response)
+      dispatch(gotAllCampuses(response.data))
+    } catch(error) {
+      console.error(error)
+    }
+  }
+}
 export const getAllStudents = () => {
   return async (dispatch) => {
     try {
@@ -32,6 +50,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         students: action.data,
+      }
+    case GOT_ALL_CAMPUSES:
+      return {
+        ...state,
+        campuses: action.data,
       }
     default:
       return state
