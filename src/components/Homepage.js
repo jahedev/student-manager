@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-import { Link } from "react-router-dom"
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Homepage extends Component {
   render() {
@@ -13,8 +13,13 @@ class Homepage extends Component {
           <Link to="/allStudents">All Students</Link>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Homepage
+export default Homepage;
+
+{
+  // add links?
+  // add is loading?
+}
