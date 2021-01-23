@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 
+import { Link } from "react-router-dom"
+
 import { connect } from "react-redux"
 import { getAllCampuses } from "../redux/reducers"
 
@@ -20,9 +22,11 @@ class AllCampuses extends Component {
   render() {
     return (
       <div>
+        <Link to="/">Return Home</Link>
+        <br />
+
         <h1>All Campuses Component</h1>
 
-        <button onClick={() => this.fetchAllCampuses()}>All Campuses</button>
         {this.props.campuses.campuses !== undefined ? (
           this.props.campuses.campuses.map((campus, index) => (
             <Campus

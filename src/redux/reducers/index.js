@@ -7,12 +7,14 @@ import {
   DELETED_STUDENT,
   CREATED_STUDENT,
   UPDATED_STUDENT,
+  GOT_CAMPUS_BY_ID,
 } from "./actionTypes"
 
 const initialState = {
   students: [],
   student: "",
   campuses: [],
+  campus: "",
 }
 
 // POST -> Create
@@ -50,6 +52,19 @@ const gotAllStudents = (data) => {
   }
 }
 
+export const getAllStudents = () => {
+  return async (dispatch) => {
+    try {
+      // http:// resolves CORS error, thank you stack overflow
+      const response = await axios.get("http://localhost:8080/api/students/")
+      console.log("getAllStudents axios response:", response)
+      dispatch(gotAllStudents(response.data.students))
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
+
 const gotAllCampuses = (data) => {
   return {
     type: GOT_ALL_CAMPUSES,
@@ -63,18 +78,6 @@ export const getAllCampuses = () => {
       const response = await axios.get("http://localhost:8080/api/campuses/")
       console.log("getAllCampuses axios response", response)
       dispatch(gotAllCampuses(response.data))
-    } catch (error) {
-      console.error(error)
-    }
-  }
-}
-export const getAllStudents = () => {
-  return async (dispatch) => {
-    try {
-      // http:// resolves CORS error, thank you stack overflow
-      const response = await axios.get("http://localhost:8080/api/students/")
-      console.log("getAllStudents axios response:", response)
-      dispatch(gotAllStudents(response.data.students))
     } catch (error) {
       console.error(error)
     }
@@ -98,6 +101,27 @@ export const getStudentById = (searchStudentId) => {
       )
       console.log("getStudentById axios response:", response)
       dispatch(gotStudentById(response.data.student))
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
+
+const gotCampusById = (data) => {
+  return {
+    type: GOT_CAMPUS_BY_ID,
+    data,
+  }
+}
+
+export const getCampusById = (searchCampusId) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/api/campuses/${searchCampusId}`
+      )
+      console.log("getCampusById axios response:", response)
+      dispatch(gotCampusById(response.data.campus))
     } catch (error) {
       console.error(error)
     }
@@ -178,6 +202,11 @@ const rootReducer = (state = initialState, action) => {
     case UPDATED_STUDENT:
       return {
         ...state,
+      }
+    case GOT_CAMPUS_BY_ID:
+      return {
+        ...state,
+        campus: action.data,
       }
     default:
       return state
