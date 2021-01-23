@@ -1,12 +1,12 @@
-import React, { Component } from "react"
-import axios from "axios"
+import React, { Component } from 'react'
+import axios from 'axios'
 
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 
-import { connect } from "react-redux"
-import { getAllStudents } from "../redux/reducers"
+import { connect } from 'react-redux'
+import { getAllStudents } from '../redux/reducers'
 
-import Student from "./Student"
+import Student from './Student'
 
 class AllStudents extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class AllStudents extends Component {
       this.fetchAllStudents()
     }, 200)
 
-    console.log("ID: ", this.props.id, " deleted")
+    console.log('ID: ', this.props.id, ' deleted')
   }
 
   // if we want all students to be displayed on button click only, comment out this function
@@ -44,7 +44,7 @@ class AllStudents extends Component {
   render() {
     return (
       <div>
-        <Link to="/">Return Home</Link>
+        <Link to='/'>Return Home</Link>
         <br />
 
         <h1>All Students Component</h1>
