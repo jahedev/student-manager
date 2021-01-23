@@ -1,7 +1,8 @@
-import axios from "axios"
 import React, { Component } from "react"
 
 import { Link } from "react-router-dom"
+
+import DeleteStudent from "./DeleteStudent"
 
 class Student extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class Student extends Component {
     console.log(id, ":", studentname)
     return (
       <div>
+        <DeleteStudent id={id} />
         <Link to={`/singleStudent/${id}`}>Name: {studentname}</Link>
         <p>Email: {email}</p>
         <p>Image: {image}</p>

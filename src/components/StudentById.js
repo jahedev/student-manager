@@ -70,7 +70,7 @@ class StudentById extends Component {
           <input type="submit" value="Submit" />
         </form> */}
 
-        {this.props.student !== undefined && this.props.student != "" ? (
+        {/* {this.props.student !== undefined && this.props.student != "" ? (
           <Student
             id={this.props.student.id}
             studentname={this.props.student.studentname}
@@ -81,7 +81,7 @@ class StudentById extends Component {
           />
         ) : (
           <span></span>
-        )}
+        )} */}
       </div>
     )
   }
