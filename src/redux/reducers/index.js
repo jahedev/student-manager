@@ -4,11 +4,12 @@ import {
   GOT_ALL_STUDENTS,
   GOT_STUDENT_BY_ID,
   GOT_ALL_CAMPUSES,
+  DELETED_STUDENT,
 } from "./actionTypes"
 
 const initialState = {
   students: [],
-  student: {},
+  student: "",
   campuses: [],
 }
 
@@ -45,7 +46,7 @@ export const getAllStudents = () => {
       // http:// resolves CORS error, thank you stack overflow
       const response = await axios.get("http://localhost:8080/api/students/")
       console.log("getAllStudents axios response:", response)
-      dispatch(gotAllStudents(response.data))
+      dispatch(gotAllStudents(response.data.students))
     } catch (error) {
       console.error(error)
     }
@@ -68,7 +69,30 @@ export const getStudentById = (searchStudentId) => {
         `http://localhost:8080/api/students/${searchStudentId}`
       )
       console.log("getStudentById axios response:", response)
-      dispatch(gotStudentById(response.data))
+      dispatch(gotStudentById(response.data.student))
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
+
+// DELETE -> Delete by Id
+
+const deletedStudent = (data) => {
+  return {
+    type: DELETED_STUDENT,
+    data,
+  }
+}
+
+export const deleteStudent = (deleteStudentId) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8080/api/students/${deleteStudentId}`
+      )
+      console.log("deleteStudent axios response:", response)
+      dispatch(deletedStudent(response.data))
     } catch (error) {
       console.error(error)
     }
@@ -91,6 +115,10 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         campuses: action.data,
+      }
+    case DELETED_STUDENT:
+      return {
+        ...state,
       }
     default:
       return state

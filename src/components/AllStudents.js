@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import axios from "axios"
 
 import { Link } from "react-router-dom"
 
@@ -9,26 +8,6 @@ import { getAllStudents } from "../redux/reducers"
 import Student from "./Student"
 
 class AllStudents extends Component {
-  constructor(props) {
-    super(props)
-
-    this.deleteStudent = this.deleteStudent.bind(this)
-  }
-
-  deleteStudent = (id) => {
-    if (!id) return
-
-    axios.delete(`http://localhost:8080/api/students/${id}`, {
-      data: {},
-    })
-
-    setTimeout(() => {
-      this.fetchAllStudents()
-    }, 200)
-
-    console.log("ID: ", this.props.id, " deleted")
-  }
-
   // if we want all students to be displayed on button click only, comment out this function
   async componentDidMount() {
     await this.fetchAllStudents()
@@ -52,8 +31,8 @@ class AllStudents extends Component {
         {/* arrow function below resloves "props" being underfined in fetchAllStudents, before: this.fetchAllStudents */}
         <button onClick={() => this.fetchAllStudents()}>All Students</button>
 
-        {this.props.students.students !== undefined ? (
-          this.props.students.students.map((student, index) => (
+        {this.props.students !== undefined ? (
+          this.props.students.map((student, index) => (
             <Student
               key={index}
               id={student.id}
@@ -62,7 +41,6 @@ class AllStudents extends Component {
               image={student.image}
               gpa={student.gpa}
               CampusId={student.CampusId}
-              deleteStudent={this.deleteStudent}
             />
           ))
         ) : (
@@ -82,6 +60,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getAllStudents: () => dispatch(getAllStudents()),
+    // deleteStudent: () => dispatch(deleteStudent()),
   }
 }
 
