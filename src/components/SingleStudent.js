@@ -14,7 +14,7 @@ class SingleStudent extends Component {
       email: this.props.student.email,
       image: this.props.student.image,
       gpa: this.props.student.gpa,
-      CampusId: this.props.student.CampusId,
+      CampusId: null,
     },
   }
 
@@ -44,11 +44,22 @@ class SingleStudent extends Component {
 
   handleEditSubmit = (e) => {
     e.preventDefault()
+
+    // if (!this.state.studentInfo.CampusId) {
+    //   delete this.state.studentInfo.CampusId
+    // }
+
     if (!this.state.studentInfo.CampusId) {
-      delete this.state.studentInfo.CampusId
+      this.setState({
+        studentInfo: {
+          ...this.state.studentInfo,
+          CampusId: null,
+        },
+      })
     }
 
     setTimeout(() => {
+      console.log("DATA SENDING AS UPDATE INFO:", this.state.studentInfo)
       this.props.updateStudent(this.state.studentInfo)
     }, 200)
 
@@ -94,7 +105,17 @@ class SingleStudent extends Component {
           )}
 
           <div>
-            <button onClick={() => this.setState({ editing: true })}>
+            <button
+              onClick={() =>
+                this.setState({
+                  editing: true,
+                  studentInfo: {
+                    ...this.state.studentInfo,
+                    CampusId: null,
+                  },
+                })
+              }
+            >
               Edit
             </button>
           </div>
