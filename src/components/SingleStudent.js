@@ -14,6 +14,8 @@ class SingleStudent extends Component {
       <div>
         <p>**Single student component</p>
         <Link to="/allStudents">All Students</Link>
+        <br />
+        <Link to="/">Return Home</Link>
         <StudentById studentId={this.props.match.params.id} />
         <DeleteStudent />
       </div>
