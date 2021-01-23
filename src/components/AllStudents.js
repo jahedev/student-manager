@@ -29,7 +29,7 @@ class AllStudents extends Component {
         <h1>All Students Component</h1>
 
         {/* arrow function below resloves "props" being underfined in fetchAllStudents, before: this.fetchAllStudents */}
-        <button onClick={() => this.fetchAllStudents()}>All Students</button>
+        {/* BUTTON NOT NEEDED <button onClick={() => this.fetchAllStudents()}>All Students</button> */}
 
         {this.props.students !== undefined ? (
           this.props.students.map((student, index) => (

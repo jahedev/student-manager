@@ -6,9 +6,16 @@ import { deleteStudent } from "../redux/reducers"
 import { Link } from "react-router-dom"
 
 class DeleteStudent extends Component {
-  state = {
-    deleteStudentId: this.props.student.id,
-  }
+  // state = {
+  //   deleteStudentId: this.props.student.id,
+  // }
+
+  // componentDidMount = () => {
+  //   console.log("comp did mount ran for DeleteStudent")
+  //   this.setState({
+  //     deleteStudentId: this.props.student.id,
+  //   })
+  // }
 
   handleSubmit = async () => {
     if (this.props.student === undefined || this.props.student === "") {
@@ -16,7 +23,7 @@ class DeleteStudent extends Component {
       return
     }
     console.log("student to be deleted with id:", this.props.student.id)
-    await this.props.deleteStudent(this.state.deleteStudentId)
+    await this.props.deleteStudent(this.props.student.id)
   }
 
   render() {

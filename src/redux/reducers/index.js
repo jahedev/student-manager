@@ -87,9 +87,8 @@ const deletedStudent = (data) => {
 export const deleteStudent = (deleteStudentId) => {
   return (dispatch) => {
     try {
-      console.log("before axios.delete call")
+      console.log("before axios.delete call, studentId:", deleteStudentId)
       axios.delete(`http://localhost:8080/api/students/${deleteStudentId}`)
-      console.log("deleteStudent axios response:")
       dispatch(deletedStudent())
     } catch (error) {
       console.error(error)

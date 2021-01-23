@@ -20,28 +20,29 @@ class StudentById extends Component {
     }
   }
 
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    })
+  // FORM FUNCTIONS NOT NEEDED
+  // handleChange = (e) => {
+  //   this.setState({
+  //     [e.target.name]: e.target.value,
+  //   })
 
-    setTimeout(() => {
-      console.log(this.state.studentId)
-    }, 100)
-  }
+  //   setTimeout(() => {
+  //     console.log(this.state.studentId)
+  //   }, 100)
+  // }
 
-  submitForm = async (e) => {
-    e.preventDefault()
-    await this.fetchStudentById(this.state.studentId)
-  }
+  // submitForm = async (e) => {
+  //   e.preventDefault()
+  //   await this.fetchStudentById(this.state.studentId)
+  // }
 
-  fetchStudentById = async (studentId) => {
-    await this.props.getStudentById(studentId)
+  // fetchStudentById = async (studentId) => {
+  //   await this.props.getStudentById(studentId)
 
-    setTimeout(() => {
-      console.log(this.props.student)
-    }, 100)
-  }
+  //   setTimeout(() => {
+  //     console.log(this.props.student)
+  //   }, 100)
+  // }
 
   render() {
     console.log(
@@ -53,10 +54,10 @@ class StudentById extends Component {
         <Link to="/">Return Home</Link>
         <br />
 
-        <h1>Student By Id Component</h1>
-        <p>Search for a student by ID</p>
+        <p>**Student By Id Component</p>
 
-        <form onSubmit={(e) => this.submitForm(e)}>
+        {/* <p>Search for a student by ID</p> */}
+        {/* FORM NOT NEEDED <form onSubmit={(e) => this.submitForm(e)}>
           <label>
             <input
               type="number"
@@ -67,7 +68,7 @@ class StudentById extends Component {
           </label>
 
           <input type="submit" value="Submit" />
-        </form>
+        </form> */}
 
         {this.props.student !== undefined && this.props.student != "" ? (
           <Student

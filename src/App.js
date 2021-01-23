@@ -16,9 +16,9 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Homepage} />
             <Route path="/allStudents" component={AllStudents} />
-            <Route path="/studentById" component={StudentById} />
+            {/* <Route path="/studentById" component={StudentById} /> not needed, delete later */}
             <Route path="/allCampuses" component={AllCampuses} />
-            <Route path="/deleteStudent" component={DeleteStudent} />
+            {/* <Route path="/deleteStudent" component={DeleteStudent} /> not needed, delete later */}
             <Route path="/singleStudent/:id" component={SingleStudent} />
           </Switch>
         </Router>
