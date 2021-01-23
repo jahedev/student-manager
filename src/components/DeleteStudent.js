@@ -1,14 +1,28 @@
 import React, { Component } from "react"
+
+import { connect } from "react-redux"
 import { deleteStudent } from "../redux/reducers"
 
+import { Link } from "react-router-dom"
+
 class DeleteStudent extends Component {
+  state = {
+    deleteStudentId: this.props.student.id,
+  }
+
   handleSubmit = async () => {
-    // await this.deleteStudent(this.props.student.student.id)
+    if (this.props.student === undefined || this.props.student === "") {
+      console.log("no student to delete")
+      return
+    }
+    console.log("student to be deleted with id:", this.props.student.id)
+    await this.props.deleteStudent(this.state.deleteStudentId)
   }
 
   render() {
     return (
       <div>
+        <Link to="/">Return Home</Link>
         <p>DeleteStudent Component</p>
         <button onClick={() => this.handleSubmit()}>Delete student</button>
       </div>
@@ -16,16 +30,17 @@ class DeleteStudent extends Component {
   }
 }
 
-mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
   return {
     student: state.student,
   }
 }
 
-mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    deleteStudent: () => dispatch(deleteStudent()),
+    deleteStudent: (deleteStudentId) =>
+      dispatch(deleteStudent(deleteStudentId)),
   }
 }
 
-export default DeleteStudent
+export default connect(mapStateToProps, mapDispatchToProps)(DeleteStudent)

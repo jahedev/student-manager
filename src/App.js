@@ -5,6 +5,7 @@ import Homepage from "./components/Homepage"
 import AllStudents from "./components/AllStudents"
 import StudentById from "./components/StudentById"
 import AllCampuses from "./components/AllCampuses"
+import DeleteStudent from "./components/DeleteStudent"
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
             <Route path="/allStudents" component={AllStudents} />
             <Route path="/studentById" component={StudentById} />
             <Route path="/allCampuses" component={AllCampuses} />
+            <Route path="/deleteStudent" component={DeleteStudent} />
           </Switch>
         </Router>
       </div>

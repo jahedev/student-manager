@@ -15,6 +15,8 @@ class Homepage extends Component {
           <Link to="/studentById">Student By Id</Link>
           <br />
           <Link to="/allCampuses">All Campuses</Link>
+          <br />
+          <Link to="/deleteStudent">Delete Student Component</Link>
         </div>
       </div>
     )

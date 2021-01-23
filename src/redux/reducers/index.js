@@ -81,18 +81,16 @@ export const getStudentById = (searchStudentId) => {
 const deletedStudent = (data) => {
   return {
     type: DELETED_STUDENT,
-    data,
   }
 }
 
 export const deleteStudent = (deleteStudentId) => {
-  return async (dispatch) => {
+  return (dispatch) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:8080/api/students/${deleteStudentId}`
-      )
-      console.log("deleteStudent axios response:", response)
-      dispatch(deletedStudent(response.data))
+      console.log("before axios.delete call")
+      axios.delete(`http://localhost:8080/api/students/${deleteStudentId}`)
+      console.log("deleteStudent axios response:")
+      dispatch(deletedStudent())
     } catch (error) {
       console.error(error)
     }
@@ -100,6 +98,7 @@ export const deleteStudent = (deleteStudentId) => {
 }
 
 const rootReducer = (state = initialState, action) => {
+  console.log("action in root reducer:", action)
   switch (action.type) {
     case GOT_ALL_STUDENTS:
       return {
