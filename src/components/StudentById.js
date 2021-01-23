@@ -51,8 +51,8 @@ class StudentById extends Component {
     )
     return (
       <div>
-        <Link to="/">Return Home</Link>
-        <br />
+        {/* <Link to="/">Return Home</Link>
+        <br /> */}
 
         <p>**Student By Id Component</p>
 

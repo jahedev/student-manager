@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { deleteStudent } from "../redux/reducers"
 
-import { Link, Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 
 class DeleteStudent extends Component {
   state = {
@@ -42,7 +42,6 @@ class DeleteStudent extends Component {
     }
     return (
       <div>
-        <Link to="/">Return Home</Link>
         <p>DeleteStudent Component</p>
         <button onClick={() => this.handleSubmit()}>Delete student</button>
       </div>
