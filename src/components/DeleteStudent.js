@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 
 import { connect } from "react-redux"
-import { deleteStudent, getAllStudents } from "../redux/reducers"
+import { deleteStudent, getAllStudents, getCampusById } from "../redux/reducers"
 
 class DeleteStudent extends Component {
   handleSubmit = async () => {
@@ -10,7 +10,12 @@ class DeleteStudent extends Component {
 
     setTimeout(() => {
       this.props.getAllStudents()
-    }, 200)
+    }, 300)
+
+    // to re render students in single campus view when deleted
+    setTimeout(() => {
+      this.props.getCampusById(this.props.CampusId)
+    }, 300)
   }
 
   render() {
@@ -31,6 +36,7 @@ const mapDispatchToProps = (dispatch) => {
     deleteStudent: (deleteStudentId) =>
       dispatch(deleteStudent(deleteStudentId)),
     getAllStudents: () => dispatch(getAllStudents()),
+    getCampusById: (searchCampusId) => dispatch(getCampusById(searchCampusId)),
   }
 }
 

@@ -10,7 +10,7 @@ class Student extends Component {
     console.log(id, ":", studentname)
     return (
       <div>
-        <DeleteStudent id={id} />
+        <DeleteStudent id={id} CampusId={CampusId} />
         <Link to={`/singleStudent/${id}`}>Name: {studentname}</Link>
         <p>Email: {email}</p>
         <p>Image: {image}</p>
