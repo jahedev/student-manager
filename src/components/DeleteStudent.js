@@ -3,9 +3,13 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { deleteStudent } from "../redux/reducers"
 
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 
 class DeleteStudent extends Component {
+  state = {
+    redirect: false,
+  }
+
   // state = {
   //   deleteStudentId: this.props.student.id,
   // }
@@ -24,9 +28,18 @@ class DeleteStudent extends Component {
     }
     console.log("student to be deleted with id:", this.props.student.id)
     await this.props.deleteStudent(this.props.student.id)
+
+    setTimeout(() => {
+      this.setState({
+        redirect: true,
+      })
+    }, 500)
   }
 
   render() {
+    if (this.state.redirect === true) {
+      return <Redirect to="/allStudents" />
+    }
     return (
       <div>
         <Link to="/">Return Home</Link>
