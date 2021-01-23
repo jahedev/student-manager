@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 
 import { connect } from "react-redux"
-import { deleteStudent, getStudentById } from "../redux/reducers"
+import { deleteStudent, getStudentById, updateStudent } from "../redux/reducers"
 import { Link, Redirect } from "react-router-dom"
 
 class SingleStudent extends Component {
@@ -9,11 +9,12 @@ class SingleStudent extends Component {
     redirect: false,
     editing: false,
     studentInfo: {
-      studentname: "",
-      email: "",
-      image: "",
-      gpa: null,
-      CampusId: null,
+      id: this.props.match.params.id,
+      studentname: this.props.student.studentname,
+      email: this.props.student.email,
+      image: this.props.student.image,
+      gpa: this.props.student.gpa,
+      CampusId: this.props.student.CampusId,
     },
   }
 
@@ -35,9 +36,32 @@ class SingleStudent extends Component {
   handleEditChange = (e) => {
     this.setState({
       studentInfo: {
+        ...this.state.studentInfo,
         [e.target.name]: e.target.value,
       },
     })
+  }
+
+  handleEditSubmit = (e) => {
+    e.preventDefault()
+    if (!this.state.studentInfo.CampusId) {
+      delete this.state.studentInfo.CampusId
+    }
+
+    setTimeout(() => {
+      this.props.updateStudent(this.state.studentInfo)
+    }, 200)
+
+    // need to re-get student to rerender component to show updated info
+    setTimeout(() => {
+      this.props.getStudentById(this.props.match.params.id)
+    }, 400)
+
+    setTimeout(() => {
+      this.setState({
+        editing: false,
+      })
+    }, 600)
   }
 
   render() {
@@ -174,6 +198,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(getStudentById(searchStudentId)),
     deleteStudent: (deleteStudentId) =>
       dispatch(deleteStudent(deleteStudentId)),
+    updateStudent: (studentInfo) => dispatch(updateStudent(studentInfo)),
   }
 }
 

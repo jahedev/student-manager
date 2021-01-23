@@ -6,6 +6,7 @@ import {
   GOT_ALL_CAMPUSES,
   DELETED_STUDENT,
   CREATED_STUDENT,
+  UPDATED_STUDENT,
 } from "./actionTypes"
 
 const initialState = {
@@ -103,6 +104,31 @@ export const getStudentById = (searchStudentId) => {
   }
 }
 
+// PUT -> Update
+const updatedStudent = () => {
+  return {
+    type: UPDATED_STUDENT,
+  }
+}
+
+export const updateStudent = (studentInfo) => {
+  return (dispatch) => {
+    try {
+      console.log("student info in updateStudent function redux:", studentInfo)
+      axios.put(`http://localhost:8080/api/students/${studentInfo.id}`, {
+        studentname: studentInfo.studentname,
+        email: studentInfo.email,
+        image: studentInfo.image,
+        gpa: studentInfo.gpa,
+        CampusId: studentInfo.CampusId,
+      })
+      dispatch(updatedStudent())
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
+
 // DELETE -> Delete by Id
 
 const deletedStudent = (data) => {
@@ -146,6 +172,10 @@ const rootReducer = (state = initialState, action) => {
         ...state,
       }
     case CREATED_STUDENT:
+      return {
+        ...state,
+      }
+    case UPDATED_STUDENT:
       return {
         ...state,
       }
