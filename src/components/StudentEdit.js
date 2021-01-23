@@ -8,31 +8,12 @@ class StudentEdit extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      studentId: '',
-    }
-
     this.handleEdit = this.handleEdit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
 
   async componentWillMount() {
-    this.fetchStudentById(this.props.id)
-  }
-
-  fetchStudentById = async (studentId) => {
-    await this.props.getStudentById(studentId)
-
-    setTimeout(() => {
-      console.log('student: ', this.props.student.student)
-      // this.setState({
-      //   id: this.props.student.student.id,
-      //   email: this.props.student.student.email,
-      //   image: this.props.student.student.image,
-      //   gpa: this.props.student.student.gpa,
-      //   CampusId: this.props.student.student.CampusId,
-      // })
-    }, 100)
+    await this.props.getStudentById(this.props.id)
   }
 
   handleChange = (e) => {
@@ -42,22 +23,24 @@ class StudentEdit extends Component {
   }
 
   handleEdit = () => {
-    let edit = {}
+    let changedStudent = {}
+
     if (this.state.studentname !== undefined)
-      edit.studentname = this.state.studentname
-    if (this.state.email !== undefined) edit.email = this.state.email
-    if (this.state.image !== undefined) edit.image = this.state.image
-    if (this.state.gpa !== undefined) edit.gpa = this.state.gpa
+      changedStudent.studentname = this.state.studentname
+    if (this.state.email !== undefined) changedStudent.email = this.state.email
+    if (this.state.image !== undefined) changedStudent.image = this.state.image
+    if (this.state.gpa !== undefined) changedStudent.gpa = this.state.gpa
 
     axios.put(
       `http://localhost:8080/api/students/${this.props.student.student.id}`,
-      edit
+      changedStudent
     )
 
+    // turn off editing mode
     this.props.editStudent(false)
 
     setTimeout(() => {
-      this.props.updateAllStudents()
+      this.props.fetchAllStudents()
     }, 200)
   }
 
@@ -74,46 +57,49 @@ class StudentEdit extends Component {
         gpa,
         CampusId,
       } = this.props.student.student
+
       returnJSX = (
         <div>
           <br />
           <h3>Edit Student '{studentname}'</h3>
-
-          <label>Name: </label>
-          <input
-            type='text'
-            name='studentname'
-            placeholder={studentname}
-            onChange={(e) => this.handleChange(e)}
-          />
-          <br />
-
-          <label>Email: </label>
-          <input
-            type='text'
-            name='email'
-            placeholder={email}
-            onChange={(e) => this.handleChange(e)}
-          />
-          <br />
-
-          <label>Photo: </label>
-          <input
-            type='text'
-            name='image'
-            placeholder={image}
-            onChange={(e) => this.handleChange(e)}
-          />
-          <br />
-
-          <label>GPA: </label>
-          <input
-            type='text'
-            name='gpa'
-            placeholder={gpa}
-            onChange={(e) => this.handleChange(e)}
-          />
-          <br />
+          <div className='edit-form'>
+            <div className='edit-form-item'>
+              <label>Name: </label>
+              <input
+                type='text'
+                name='studentname'
+                placeholder={studentname}
+                onChange={(e) => this.handleChange(e)}
+              />
+            </div>
+            <div className='edit-form-item'>
+              <label>Email: </label>
+              <input
+                type='text'
+                name='email'
+                placeholder={email}
+                onChange={(e) => this.handleChange(e)}
+              />
+            </div>
+            <div className='edit-form-item'>
+              <label>Photo: </label>
+              <input
+                type='text'
+                name='image'
+                placeholder={image}
+                onChange={(e) => this.handleChange(e)}
+              />
+            </div>
+            <div className='edit-form-item'>
+              <label>GPA: </label>
+              <input
+                type='text'
+                name='gpa'
+                placeholder={gpa}
+                onChange={(e) => this.handleChange(e)}
+              />
+            </div>
+          </div>
           <br />
           <button onClick={this.handleEdit}>Save Changes</button>
           <button onClick={() => this.props.editStudent(false)}>

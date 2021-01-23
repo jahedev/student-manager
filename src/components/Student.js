@@ -11,25 +11,28 @@ class Student extends Component {
     }
 
     this.editStudent = this.editStudent.bind(this)
+    this.deleteStudent = this.deleteStudent.bind(this)
+  }
+
+  deleteStudent = (id) => {
+    if (!id) return
+
+    axios.delete(`http://localhost:8080/api/students/${id}`, {
+      data: {},
+    })
+
+    setTimeout(() => {
+      this.props.fetchAllStudents()
+    }, 200)
   }
 
   editStudent = (editing) => {
+    // if true, turn on editing mode, otherwise simply display student
     this.setState({ editing: editing })
   }
 
   render() {
-    const {
-      id,
-      studentname,
-      email,
-      image,
-      gpa,
-      CampusId,
-      deleteStudent,
-    } = this.props
-
-    console.log(id, ':', studentname)
-
+    const { id, studentname, email, image, gpa, CampusId } = this.props
     let returnJSX = ''
 
     if (this.state.editing) {
@@ -37,7 +40,7 @@ class Student extends Component {
         <StudentEdit
           id={id}
           editStudent={this.editStudent}
-          updateAllStudents={this.props.updateAllStudents}
+          fetchAllStudents={this.props.fetchAllStudents}
         />
       )
     } else {
@@ -48,7 +51,7 @@ class Student extends Component {
           <p>Image: {image}</p>
           <p>GPA: {gpa}</p>
           <p>CampusId: {CampusId}</p>
-          <button type='button' onClick={() => deleteStudent(id)}>
+          <button type='button' onClick={() => this.deleteStudent(id)}>
             Delete {studentname}
           </button>
           <button type='button' onClick={() => this.editStudent(true)}>
