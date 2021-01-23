@@ -7,8 +7,7 @@ class Campus extends Component {
     const { id, campusname, image, address, description } = this.props
     return (
       <div>
-        <Link to={`/singleCampus/${id}`}></Link>
-        <p>Campus Name: {campusname}</p>
+        <Link to={`/singleCampus/${id}`}>Campus Name: {campusname}</Link>
         <p>Image: {image}</p>
         <p>Address: {address}</p>
         <p>Description: {description}</p>

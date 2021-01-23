@@ -31,6 +31,7 @@ class AllCampuses extends Component {
           this.props.campuses.campuses.map((campus, index) => (
             <Campus
               key={index}
+              id={campus.id}
               campusname={campus.campusname}
               image={campus.image}
               address={campus.address}

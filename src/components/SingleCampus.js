@@ -16,7 +16,11 @@ class SingleCampus extends Component {
     console.log("Students of campus:", this.props.campus.Students)
     return (
       <div>
+        <Link to="/allCampuses">All Campuses</Link>
+        <br />
         <Link to="/">Return Home</Link>
+        <br />
+
         <p>single campus component</p>
 
         {this.props.campus !== undefined ? (
