@@ -42,7 +42,6 @@ class AllStudents extends Component {
               image={student.image}
               gpa={student.gpa}
               CampusId={student.CampusId}
-              deleteStudent={this.deleteStudent}
               fetchAllStudents={this.fetchAllStudents}
             />
           ))
