@@ -33,7 +33,13 @@ class Student extends Component {
     let returnJSX = ''
 
     if (this.state.editing) {
-      returnJSX = <StudentEdit id={id} />
+      returnJSX = (
+        <StudentEdit
+          id={id}
+          editStudent={this.editStudent}
+          updateAllStudents={this.props.updateAllStudents}
+        />
+      )
     } else {
       returnJSX = (
         <div>

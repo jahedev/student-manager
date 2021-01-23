@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
@@ -10,6 +11,9 @@ class StudentEdit extends Component {
     this.state = {
       studentId: '',
     }
+
+    this.handleEdit = this.handleEdit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   async componentWillMount() {
@@ -31,6 +35,32 @@ class StudentEdit extends Component {
     }, 100)
   }
 
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    })
+  }
+
+  handleEdit = () => {
+    let edit = {}
+    if (this.state.studentname !== undefined)
+      edit.studentname = this.state.studentname
+    if (this.state.email !== undefined) edit.email = this.state.email
+    if (this.state.image !== undefined) edit.image = this.state.image
+    if (this.state.gpa !== undefined) edit.gpa = this.state.gpa
+
+    axios.put(
+      `http://localhost:8080/api/students/${this.props.student.student.id}`,
+      edit
+    )
+
+    this.props.editStudent(false)
+
+    setTimeout(() => {
+      this.props.updateAllStudents()
+    }, 200)
+  }
+
   render() {
     let returnJSX = ''
     if (this.props.student.student === undefined)
@@ -50,21 +80,45 @@ class StudentEdit extends Component {
           <h3>Edit Student '{studentname}'</h3>
 
           <label>Name: </label>
-          <input type='text' placeholder={studentname} />
+          <input
+            type='text'
+            name='studentname'
+            placeholder={studentname}
+            onChange={(e) => this.handleChange(e)}
+          />
           <br />
 
           <label>Email: </label>
-          <input type='text' placeholder={email} />
+          <input
+            type='text'
+            name='email'
+            placeholder={email}
+            onChange={(e) => this.handleChange(e)}
+          />
           <br />
 
           <label>Photo: </label>
-          <input type='text' placeholder={image} />
+          <input
+            type='text'
+            name='image'
+            placeholder={image}
+            onChange={(e) => this.handleChange(e)}
+          />
           <br />
 
-          <label>CampusId: </label>
-          <input type='text' placeholder={CampusId} />
+          <label>GPA: </label>
+          <input
+            type='text'
+            name='gpa'
+            placeholder={gpa}
+            onChange={(e) => this.handleChange(e)}
+          />
           <br />
           <br />
+          <button onClick={this.handleEdit}>Save Changes</button>
+          <button onClick={() => this.props.editStudent(false)}>
+            Cancel Changes
+          </button>
         </div>
       )
     }

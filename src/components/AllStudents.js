@@ -13,6 +13,7 @@ class AllStudents extends Component {
     super(props)
 
     this.deleteStudent = this.deleteStudent.bind(this)
+    this.updateAllStudents = this.updateAllStudents.bind(this)
   }
 
   deleteStudent = (id) => {
@@ -41,6 +42,10 @@ class AllStudents extends Component {
     }, 200)
   }
 
+  updateAllStudents = () => {
+    this.fetchAllStudents()
+  }
+
   render() {
     return (
       <div>
@@ -63,6 +68,7 @@ class AllStudents extends Component {
               gpa={student.gpa}
               CampusId={student.CampusId}
               deleteStudent={this.deleteStudent}
+              updateAllStudents={this.updateAllStudents}
             />
           ))
         ) : (
