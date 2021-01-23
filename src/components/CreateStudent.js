@@ -12,9 +12,10 @@ class CreateStudent extends Component {
       email: "",
       image: "",
       gpa: null,
+      CampusId: null,
     },
     // Campus is optional, thus outside required fields obj of studentInfo
-    CampusId: null,
+    // CampusId: null,
   }
 
   handleChange = (e) => {
@@ -27,8 +28,9 @@ class CreateStudent extends Component {
   }
 
   handleSubmit = (e) => {
+    console.log("CAMPUS ID IN SUBMIT FUNCT:", this.state.CampusId)
     e.preventDefault()
-    const { studentname, email, image, gpa } = this.state.studentInfo
+    const { studentname, email, image, gpa, CampusId } = this.state.studentInfo
     if (!studentname && !email && !image && !gpa) {
       console.error(
         "Please enter a value for all required (*) fields: studentname, email, image, gpa"
@@ -36,14 +38,9 @@ class CreateStudent extends Component {
       return
     }
 
-    // if CampusId provided, append it to the student info object
-    if (this.state.CampusId) {
-      this.setState({
-        studentInfo: {
-          ...this.state.studentInfo,
-          CampusId: this.state.CampusId,
-        },
-      })
+    // remove object property because backend won't accept empty property
+    if (!CampusId) {
+      delete this.state.studentInfo.CampusId
     }
 
     setTimeout(() => {
@@ -58,53 +55,65 @@ class CreateStudent extends Component {
         <p>create student component</p>
 
         <form onSubmit={(e) => this.handleSubmit(e)}>
-          <label>
-            Name:
-            <input
-              type="text"
-              name="studentname"
-              onChange={(e) => this.handleChange(e)}
-            />
-          </label>
+          <div>
+            <label>
+              Name:
+              <input
+                type="text"
+                name="studentname"
+                onChange={(e) => this.handleChange(e)}
+              />
+            </label>
+          </div>
 
-          <label>
-            Email:
-            <input
-              type="email"
-              name="email"
-              onChange={(e) => this.handleChange(e)}
-            />
-          </label>
+          <div>
+            <label>
+              Email:
+              <input
+                type="email"
+                name="email"
+                onChange={(e) => this.handleChange(e)}
+              />
+            </label>
+          </div>
 
-          <label>
-            Image:
-            <input
-              type="text"
-              name="image"
-              onChange={(e) => this.handleChange(e)}
-            />
-          </label>
+          <div>
+            <label>
+              Image:
+              <input
+                type="text"
+                name="image"
+                onChange={(e) => this.handleChange(e)}
+              />
+            </label>
+          </div>
 
-          <label>
-            GPA:
-            <input
-              type="number"
-              step="0.01"
-              name="gpa"
-              onChange={(e) => this.handleChange(e)}
-            />
-          </label>
+          <div>
+            <label>
+              GPA:
+              <input
+                type="number"
+                step="0.01"
+                name="gpa"
+                onChange={(e) => this.handleChange(e)}
+              />
+            </label>
+          </div>
 
-          <label>
-            Campus Id:
-            <input
-              type="number"
-              name="CampusId"
-              onChange={(e) => this.handleChange(e)}
-            />
-          </label>
+          <div>
+            <label>
+              Campus Id:
+              <input
+                type="number"
+                name="CampusId"
+                onChange={(e) => this.handleChange(e)}
+              />
+            </label>
+          </div>
 
-          <input type="submit" value="Submit" />
+          <div>
+            <input type="submit" value="Submit" />
+          </div>
         </form>
       </div>
     )
