@@ -12,8 +12,9 @@ class CreateStudent extends Component {
       email: "",
       image: "",
       gpa: null,
-      CampusId: null,
     },
+    // Campus is optional, thus outside required fields obj of studentInfo
+    CampusId: null,
   }
 
   handleChange = (e) => {
@@ -27,10 +28,22 @@ class CreateStudent extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    if (!this.state.studentInfo.studentname) {
-      console.log(
-        "this is a test to make sure the name is enterred, do this for all vals instead of campusId"
+    const { studentname, email, image, gpa } = this.state.studentInfo
+    if (!studentname && !email && !image && !gpa) {
+      console.error(
+        "Please enter a value for all required (*) fields: studentname, email, image, gpa"
       )
+      return
+    }
+
+    // if CampusId provided, append it to the student info object
+    if (this.state.CampusId) {
+      this.setState({
+        studentInfo: {
+          ...this.state.studentInfo,
+          CampusId: this.state.CampusId,
+        },
+      })
     }
 
     setTimeout(() => {
