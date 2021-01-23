@@ -7,6 +7,14 @@ import { Link, Redirect } from "react-router-dom"
 class SingleStudent extends Component {
   state = {
     redirect: false,
+    editing: false,
+    studentInfo: {
+      studentname: "",
+      email: "",
+      image: "",
+      gpa: null,
+      CampusId: null,
+    },
   }
 
   componentDidMount = async () => {
@@ -24,35 +32,133 @@ class SingleStudent extends Component {
     }, 400)
   }
 
+  handleEditChange = (e) => {
+    this.setState({
+      studentInfo: {
+        [e.target.name]: e.target.value,
+      },
+    })
+  }
+
   render() {
     if (this.state.redirect === true) {
       return <Redirect to="/allStudents" />
     }
     console.log("url param id:", this.props.match.params.id)
-    return (
-      <div>
-        <Link to="/allStudents">All Students</Link>
-        <br />
-        <Link to="/">Return Home</Link>
-        <br />
 
-        {this.props.student !== undefined ? (
-          <div>
-            <p>Name: {this.props.student.studentname}</p>
-            <p>Email: {this.props.student.email}</p>
-            <p>Image: {this.props.student.image}</p>
-            <p>GPA: {this.props.student.gpa}</p>
-            <p>CampusId: {this.props.student.CampusId}</p>
-          </div>
-        ) : (
-          <br />
-        )}
-
+    if (!this.state.editing) {
+      return (
         <div>
-          <button onClick={() => this.handleSubmit()}>Delete student</button>
+          <Link to="/allStudents">All Students</Link>
+          <br />
+          <Link to="/">Return Home</Link>
+          <br />
+
+          <div>
+            <button onClick={() => this.handleSubmit()}>Delete student</button>
+          </div>
+          {this.props.student !== undefined ? (
+            <div>
+              <p>Name: {this.props.student.studentname}</p>
+              <p>Email: {this.props.student.email}</p>
+              <p>Image: {this.props.student.image}</p>
+              <p>GPA: {this.props.student.gpa}</p>
+              <p>CampusId: {this.props.student.CampusId}</p>
+            </div>
+          ) : (
+            <br />
+          )}
+
+          <div>
+            <button onClick={() => this.setState({ editing: true })}>
+              Edit
+            </button>
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return (
+        <div>
+          {/* edit form */}
+          <form>
+            <div>
+              <label>
+                Name:
+                <input
+                  type="text"
+                  name="studentname"
+                  placeholder={this.props.student.studentname}
+                  onChange={(e) => this.handleEditChange(e)}
+                />
+              </label>
+            </div>
+
+            <div>
+              <label>
+                Email:
+                <input
+                  type="email"
+                  name="email"
+                  placeholder={this.props.student.email}
+                  onChange={(e) => this.handleEditChange(e)}
+                />
+              </label>
+            </div>
+
+            <div>
+              <label>
+                Image:
+                <input
+                  type="text"
+                  name="image"
+                  placeholder={this.props.student.image}
+                  onChange={(e) => this.handleEditChange(e)}
+                />
+              </label>
+            </div>
+
+            <div>
+              <label>
+                GPA:
+                <input
+                  type="number"
+                  step="0.01"
+                  name="gpa"
+                  placeholder={this.props.student.gpa}
+                  onChange={(e) => this.handleEditChange(e)}
+                />
+              </label>
+            </div>
+
+            <div>
+              <label>
+                CampusId:
+                <input
+                  type="number"
+                  name="CampusId"
+                  placeholder={this.props.student.CampusId}
+                  onChange={(e) => this.handleEditChange(e)}
+                />
+              </label>
+            </div>
+
+            <div>
+              <button onClick={() => this.setState({ editing: false })}>
+                Cancel
+              </button>
+            </div>
+
+            <div>
+              <input
+                type="submit"
+                value="Submit"
+                onClick={(e) => this.handleEditSubmit(e)}
+              />
+            </div>
+          </form>
+        </div>
+      )
+    }
   }
 }
 
