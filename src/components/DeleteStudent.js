@@ -1,48 +1,23 @@
 import React, { Component } from "react"
 
 import { connect } from "react-redux"
-import { deleteStudent } from "../redux/reducers"
+import { deleteStudent, getAllStudents } from "../redux/reducers"
 
 import { Redirect } from "react-router-dom"
 
 class DeleteStudent extends Component {
-  state = {
-    redirect: false,
-  }
-
-  // state = {
-  //   deleteStudentId: this.props.student.id,
-  // }
-
-  // componentDidMount = () => {
-  //   console.log("comp did mount ran for DeleteStudent")
-  //   this.setState({
-  //     deleteStudentId: this.props.student.id,
-  //   })
-  // }
-
   handleSubmit = async () => {
-    if (this.props.student === undefined || this.props.student === "") {
-      console.log("no student to delete")
-      return
-    }
-    console.log("student to be deleted with id:", this.props.student.id)
-    await this.props.deleteStudent(this.props.student.id)
+    console.log("student to be deleted with id:", this.props.id)
+    await this.props.deleteStudent(this.props.id)
 
     setTimeout(() => {
-      this.setState({
-        redirect: true,
-      })
-    }, 500)
+      this.props.getAllStudents()
+    }, 200)
   }
 
   render() {
-    if (this.state.redirect === true) {
-      return <Redirect to="/allStudents" />
-    }
     return (
       <div>
-        <p>DeleteStudent Component</p>
         <button onClick={() => this.handleSubmit()}>Delete student</button>
       </div>
     )
@@ -50,15 +25,14 @@ class DeleteStudent extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    student: state.student,
-  }
+  return {}
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     deleteStudent: (deleteStudentId) =>
       dispatch(deleteStudent(deleteStudentId)),
+    getAllStudents: () => dispatch(getAllStudents()),
   }
 }
 

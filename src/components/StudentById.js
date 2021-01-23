@@ -44,6 +44,12 @@ class StudentById extends Component {
   //   }, 100)
   // }
 
+  //
+  //
+  // THIS COMPONENT IS NO LONGER NECESSARY. DELETE LATER *******************
+  //
+  //
+
   render() {
     console.log(
       "current state of studentId in studentById:",
@@ -53,8 +59,6 @@ class StudentById extends Component {
       <div>
         {/* <Link to="/">Return Home</Link>
         <br /> */}
-
-        <p>**Student By Id Component</p>
 
         {/* <p>Search for a student by ID</p> */}
         {/* FORM NOT NEEDED <form onSubmit={(e) => this.submitForm(e)}>
@@ -70,7 +74,7 @@ class StudentById extends Component {
           <input type="submit" value="Submit" />
         </form> */}
 
-        {this.props.student !== undefined && this.props.student != "" ? (
+        {/* {this.props.student !== undefined && this.props.student != "" ? (
           <Student
             id={this.props.student.id}
             studentname={this.props.student.studentname}
@@ -81,7 +85,7 @@ class StudentById extends Component {
           />
         ) : (
           <span></span>
-        )}
+        )} */}
       </div>
     )
   }
