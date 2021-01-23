@@ -12,12 +12,10 @@ class Homepage extends Component {
         <div>
           <Link to="/allStudents">All Students</Link>
           <br />
-          {/* NOT NEEDED <Link to="/studentById">Student By Id</Link>
-          <br /> */}
           <Link to="/allCampuses">All Campuses</Link>
           <br />
-          {/* NOT NEEDED <Link to="/deleteStudent">Delete Student Component</Link>
-          <br/> */}
+          <Link to="/createStudent">Create Student</Link>
+          <br />
         </div>
       </div>
     )

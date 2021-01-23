@@ -1,11 +1,7 @@
 import React, { Component } from "react"
 
-import { Link } from "react-router-dom"
-
 import { connect } from "react-redux"
 import { getStudentById } from "../redux/reducers"
-
-import Student from "./Student"
 
 class StudentById extends Component {
   state = {

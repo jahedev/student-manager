@@ -3,8 +3,6 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { deleteStudent, getAllStudents } from "../redux/reducers"
 
-import { Redirect } from "react-router-dom"
-
 class DeleteStudent extends Component {
   handleSubmit = async () => {
     console.log("student to be deleted with id:", this.props.id)

@@ -5,12 +5,39 @@ import {
   GOT_STUDENT_BY_ID,
   GOT_ALL_CAMPUSES,
   DELETED_STUDENT,
+  CREATED_STUDENT,
 } from "./actionTypes"
 
 const initialState = {
   students: [],
   student: "",
   campuses: [],
+}
+
+// POST -> Create
+
+const createdStudent = () => {
+  return {
+    type: CREATED_STUDENT,
+  }
+}
+
+export const createStudent = (studentInfo) => {
+  return (dispatch) => {
+    try {
+      console.log("creating student with this info:", studentInfo)
+      axios.post("http://localhost:8080/api/students/", {
+        studentname: studentInfo.studentname,
+        email: studentInfo.email,
+        image: studentInfo.image,
+        gpa: studentInfo.gpa,
+        CampusId: studentInfo.CampusId,
+      })
+      dispatch(createdStudent())
+    } catch (error) {
+      console.error(error)
+    }
+  }
 }
 
 // GET -> Read all
@@ -115,6 +142,10 @@ const rootReducer = (state = initialState, action) => {
         campuses: action.data,
       }
     case DELETED_STUDENT:
+      return {
+        ...state,
+      }
+    case CREATED_STUDENT:
       return {
         ...state,
       }

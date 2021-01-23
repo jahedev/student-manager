@@ -5,10 +5,6 @@ import { Link } from "react-router-dom"
 import DeleteStudent from "./DeleteStudent"
 
 class Student extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const { id, studentname, email, image, gpa, CampusId } = this.props
     console.log(id, ":", studentname)
