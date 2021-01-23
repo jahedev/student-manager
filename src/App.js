@@ -6,6 +6,7 @@ import AllStudents from "./components/AllStudents"
 import StudentById from "./components/StudentById"
 import AllCampuses from "./components/AllCampuses"
 import DeleteStudent from "./components/DeleteStudent"
+import SingleStudent from "./components/SingleStudent"
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
             <Route path="/studentById" component={StudentById} />
             <Route path="/allCampuses" component={AllCampuses} />
             <Route path="/deleteStudent" component={DeleteStudent} />
+            <Route path="/singleStudent/:id" component={SingleStudent} />
           </Switch>
         </Router>
       </div>

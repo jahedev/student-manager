@@ -9,7 +9,15 @@ import Student from "./Student"
 
 class StudentById extends Component {
   state = {
-    studentId: undefined,
+    studentId:
+      this.props.studentId === undefined ? undefined : this.props.studentId,
+  }
+
+  // needed to render student on visiting .../singleStudent/id
+  componentDidMount = async () => {
+    if (this.state.studentId !== undefined) {
+      await this.props.getStudentById(this.state.studentId)
+    }
   }
 
   handleChange = (e) => {
@@ -36,6 +44,10 @@ class StudentById extends Component {
   }
 
   render() {
+    console.log(
+      "current state of studentId in studentById:",
+      this.state.studentId
+    )
     return (
       <div>
         <Link to="/">Return Home</Link>
@@ -59,6 +71,7 @@ class StudentById extends Component {
 
         {this.props.student !== undefined && this.props.student != "" ? (
           <Student
+            id={this.props.student.id}
             studentname={this.props.student.studentname}
             email={this.props.student.email}
             image={this.props.student.image}
