@@ -31,7 +31,7 @@ class CreateStudent extends Component {
     console.log("CAMPUS ID IN SUBMIT FUNCT:", this.state.CampusId)
     e.preventDefault()
     const { studentname, email, image, gpa, CampusId } = this.state.studentInfo
-    if (!studentname && !email && !image && !gpa) {
+    if (!studentname || !email || !image || !gpa) {
       console.error(
         "Please enter a value for all required (*) fields: studentname, email, image, gpa"
       )
