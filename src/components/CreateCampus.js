@@ -53,48 +53,49 @@ class CreateCampus extends Component {
           <div>
             <label>
               Name:
+            </label>
               <input
                 type="text"
                 name="campusname"
                 onChange={(e) => this.handleChange(e)}
-              />
-            </label>
+              /> 
           </div>
 
           <div>
             <label>
               Image:
+            </label>
               <input
                 type="text"
                 name="image"
                 onChange={(e) => this.handleChange(e)}
               />
-            </label>
           </div>
 
           <div>
             <label>
               Address:
+            </label>
               <input
                 type="text"
                 name="address"
                 onChange={(e) => this.handleChange(e)}
-              />
-            </label>
+              />      
           </div>
 
           <div>
             <label>
               Description:
+            </label>
               <input
                 type="text"
                 name="description"
                 onChange={(e) => this.handleChange(e)}
               />
-            </label>
+            
 
             <div>
-              <input type="submit" value="Submit" />
+              <input className="submit" type="submit" value="Submit" />
             </div>
           </div>
         </form>

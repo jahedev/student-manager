@@ -6,9 +6,7 @@ class Homepage extends Component {
   render() {
     return (
       <div className="container">
-        {/* <Navbar /> */}
-        {/* <h1>homepage</h1> */}
-        <div className="bg-whole"></div>
+        <div className="bg-whole"></div> {/* <- bkg img on homepage */}
       </div>
     )
   }

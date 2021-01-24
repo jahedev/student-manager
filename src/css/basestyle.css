@@ -69,5 +69,44 @@ a {
 }
 
 .createCampusForm{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  display: inline-block;
+  border:3px solid rgb(100, 165, 109);
+  background-image: url(../images/formbackground.webp);
+}
 
+input{
+  font: 24px bold;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 25px;
+  padding-left: 20px;
+  border: 1px solid rgb(124, 70, 131);
+  border-radius: 4px;
+  background-color: #53ce8a;
+}
+input:hover{
+  background-color: #33a3e9;
+}
+.submit{
+  font: 30px bold;
+  margin-top: 60px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-right: 20px;
+}
+label{
+  font: 24px bold;
+  font-family: Arial, Helvetica, sans-serif;
+  min-width: 150px;
+  display:inline-block;
+}
+
+.submit:hover{
+  background-color: #33a3e9;
+}
+
+.submit:active{
+  background-color: rgb(124, 70, 131);
 }
