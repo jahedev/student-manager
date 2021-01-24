@@ -1,14 +1,15 @@
 import React, { Component } from "react"
 
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 
 import { connect } from "react-redux"
-import { getCampusById, updateCampus } from "../redux/reducers"
+import { getCampusById, updateCampus, deleteCampus } from "../redux/reducers"
 
 import Student from "./Student"
 
 class SingleCampus extends Component {
   state = {
+    redirect: false,
     editing: false,
     campusInfo: {
       id: this.props.match.params.id, // id from url
@@ -21,6 +22,16 @@ class SingleCampus extends Component {
 
   componentDidMount = async () => {
     await this.props.getCampusById(this.props.match.params.id)
+  }
+
+  handleDelete = () => {
+    this.props.deleteCampus(this.props.match.params.id)
+
+    setTimeout(() => {
+      this.setState({
+        redirect: true,
+      })
+    }, 500)
   }
 
   handleEditChange = (e) => {
@@ -50,6 +61,9 @@ class SingleCampus extends Component {
 
   render() {
     console.log("Students of campus:", this.props.campus.Students)
+    if (this.state.redirect === true) {
+      return <Redirect to="/allCampuses" />
+    }
     if (!this.state.editing) {
       return (
         <div>
@@ -58,8 +72,9 @@ class SingleCampus extends Component {
           <Link to="/">Return Home</Link>
           <br />
 
-          <p>single campus component</p>
-
+          <div>
+            <button onClick={() => this.handleDelete()}>Delete Campus</button>
+          </div>
           {this.props.campus !== undefined ? (
             <div>
               <p>Name: {this.props.campus.campusname}</p>
@@ -179,6 +194,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getCampusById: (searchCampusId) => dispatch(getCampusById(searchCampusId)),
     updateCampus: (campusInfo) => dispatch(updateCampus(campusInfo)),
+    deleteCampus: (deleteCampusId) => dispatch(deleteCampus(deleteCampusId)),
   }
 }
 
