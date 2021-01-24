@@ -6,11 +6,13 @@ import { connect } from "react-redux"
 import { getCampusById, updateCampus, deleteCampus } from "../redux/reducers"
 
 import Student from "./Student"
+import CreateStudent from "./CreateStudent"
 
 class SingleCampus extends Component {
   state = {
     redirect: false,
     editing: false,
+    addingStudent: false,
     campusInfo: {
       id: this.props.match.params.id, // id from url
       campusname: this.props.campus.campusname,
@@ -86,6 +88,31 @@ class SingleCampus extends Component {
                   Edit Campus
                 </button>
               </div>
+              <div>
+                <button
+                  onClick={() =>
+                    this.setState({ addingStudent: !this.state.addingStudent })
+                  }
+                >
+                  Add Student
+                </button>
+              </div>
+              {this.state.addingStudent === true ? (
+                <div>
+                  <div>
+                    <CreateStudent />
+                  </div>
+                  <div>
+                    <button
+                      onClick={() => this.setState({ addingStudent: false })}
+                    >
+                      Cancel Addition
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <span />
+              )}
               <div>
                 Students: <br />
                 {this.props.campus.Students !== undefined ? (

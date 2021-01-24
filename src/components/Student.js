@@ -12,10 +12,11 @@ class Student extends Component {
       <div>
         <DeleteStudent id={id} CampusId={CampusId} />
         <Link to={`/singleStudent/${id}`}>Name: {studentname}</Link>
-        <p>Email: {email}</p>
-        <p>Image: {image}</p>
-        <p>GPA: {gpa}</p>
-        <p>CampusId: {CampusId}</p>
+        {/* Requirements just want student names displayed on all students */}
+        {/* <p>Email: {email}</p> */}
+        {/* <p>Image: {image}</p> */}
+        {/* <p>GPA: {gpa}</p> */}
+        {/* <p>CampusId: {CampusId}</p> */}
       </div>
     )
   }

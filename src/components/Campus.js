@@ -12,8 +12,9 @@ class Campus extends Component {
         <DeleteCampus CampusId={id} />
         <Link to={`/singleCampus/${id}`}>Campus Name: {campusname}</Link>
         <p>Image: {image}</p>
-        <p>Address: {address}</p>
-        <p>Description: {description}</p>
+        {/* Requirements just want campus name and image displayed on all campuses */}
+        {/* <p>Address: {address}</p> */}
+        {/* <p>Description: {description}</p> */}
       </div>
     )
   }
