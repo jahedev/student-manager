@@ -74,7 +74,6 @@ a {
 
 input {
   font-size: 1rem;
-  margin-left: 25px;
   padding: 5px 7px;
   border: 1px solid #333;
   border-radius: 5px;
@@ -102,6 +101,7 @@ label {
 
 .create-btn {
   width: 100%;
+  padding: 7px 7px;
 }
 
 .create-btn:hover {
