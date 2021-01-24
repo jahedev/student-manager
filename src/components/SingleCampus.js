@@ -27,6 +27,8 @@ class SingleCampus extends Component {
           <div>
             <p>Name: {this.props.campus.campusname}</p>
             <p>Image: {this.props.campus.image}</p>
+            <p>Address: {this.props.campus.address}</p>
+            <p>Description: {this.props.campus.description}</p>
             <div>
               Students: <br />
               {this.props.campus.Students !== undefined ? (

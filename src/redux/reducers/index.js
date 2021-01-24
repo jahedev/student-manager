@@ -9,6 +9,7 @@ import {
   UPDATED_STUDENT,
   GOT_CAMPUS_BY_ID,
   DELETED_CAMPUS,
+  CREATED_CAMPUS,
 } from "./actionTypes"
 
 const initialState = {
@@ -38,6 +39,28 @@ export const createStudent = (studentInfo) => {
         CampusId: studentInfo.CampusId,
       })
       dispatch(createdStudent())
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
+
+const createdCampus = () => {
+  return {
+    type: CREATED_CAMPUS,
+  }
+}
+
+export const createCampus = (campusInfo) => {
+  return (dispatch) => {
+    try {
+      axios.post("http://localhost:8080/api/campuses/", {
+        campusname: campusInfo.campusname,
+        image: campusInfo.image,
+        address: campusInfo.address,
+        description: campusInfo.description,
+      })
+      dispatch(createdCampus())
     } catch (error) {
       console.error(error)
     }
@@ -228,6 +251,10 @@ const rootReducer = (state = initialState, action) => {
         campus: action.data,
       }
     case DELETED_CAMPUS:
+      return {
+        ...state,
+      }
+    case CREATED_CAMPUS:
       return {
         ...state,
       }
