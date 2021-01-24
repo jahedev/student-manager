@@ -8,6 +8,7 @@ import {
   CREATED_STUDENT,
   UPDATED_STUDENT,
   GOT_CAMPUS_BY_ID,
+  DELETED_CAMPUS,
 } from "./actionTypes"
 
 const initialState = {
@@ -173,6 +174,24 @@ export const deleteStudent = (deleteStudentId) => {
   }
 }
 
+const deletedCampus = () => {
+  return {
+    type: DELETED_CAMPUS,
+  }
+}
+
+export const deleteCampus = (deleteCampusId) => {
+  return (dispatch) => {
+    try {
+      axios.delete(`http://localhost:8080/api/campuses/${deleteCampusId}`)
+      console.log("deleteCampus id redux:", deleteCampusId)
+      dispatch(deletedCampus())
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
+
 const rootReducer = (state = initialState, action) => {
   console.log("action in root reducer:", action)
   switch (action.type) {
@@ -207,6 +226,10 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         campus: action.data,
+      }
+    case DELETED_CAMPUS:
+      return {
+        ...state,
       }
     default:
       return state
