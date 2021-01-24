@@ -118,7 +118,7 @@ class SingleStudent extends Component {
                 })
               }
             >
-              Edit
+              Edit Student
             </button>
           </div>
         </div>

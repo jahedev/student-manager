@@ -67,6 +67,11 @@ class SingleCampus extends Component {
               <p>Address: {this.props.campus.address}</p>
               <p>Description: {this.props.campus.description}</p>
               <div>
+                <button onClick={() => this.setState({ editing: true })}>
+                  Edit Campus
+                </button>
+              </div>
+              <div>
                 Students: <br />
                 {this.props.campus.Students !== undefined ? (
                   this.props.campus.Students.map((student, index) => (
@@ -89,7 +94,11 @@ class SingleCampus extends Component {
             <br />
           )}
 
-          <button onClick={() => this.setState({ editing: true })}>Edit</button>
+          {/* <div>
+            <button onClick={() => this.setState({ editing: true })}>
+              Edit
+            </button>
+          </div> */}
         </div>
       )
     } else {
