@@ -114,22 +114,35 @@ class SingleCampus extends Component {
                 <span />
               )}
               <div>
-                Students: <br />
-                {this.props.campus.Students !== undefined ? (
-                  this.props.campus.Students.map((student, index) => (
-                    <Student
-                      key={index}
-                      id={student.id}
-                      studentname={student.studentname}
-                      email={student.email}
-                      image={student.image}
-                      gpa={student.gpa}
-                      CampusId={student.CampusId}
-                    />
-                  ))
-                ) : (
-                  <br />
-                )}
+                <div>
+                  {this.props.campus.Students !== undefined ? (
+                    this.props.campus.Students.length === 0 ? (
+                      <div>
+                        <p>
+                          This campus does not have any students enrolled at the
+                          moment.
+                        </p>
+                      </div>
+                    ) : (
+                      this.props.campus.Students.map((student, index) => (
+                        <div>
+                          <p>Students:</p>
+                          <Student
+                            key={index}
+                            id={student.id}
+                            studentname={student.studentname}
+                            email={student.email}
+                            image={student.image}
+                            gpa={student.gpa}
+                            CampusId={student.CampusId}
+                          />
+                        </div>
+                      ))
+                    )
+                  ) : (
+                    <br />
+                  )}
+                </div>
               </div>
             </div>
           ) : (
