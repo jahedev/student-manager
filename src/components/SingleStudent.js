@@ -98,7 +98,9 @@ class SingleStudent extends Component {
               <p>Email: {this.props.student.email}</p>
               <p>Image: {this.props.student.image}</p>
               <p>GPA: {this.props.student.gpa}</p>
-              <p>CampusId: {this.props.student.CampusId}</p>
+              <Link to={`/singleCampus/${this.props.student.campusId}`}>
+                CampusId: {this.props.student.CampusId}
+              </Link>
             </div>
           ) : (
             <br />
