@@ -49,10 +49,7 @@ class CreateCampus extends Component {
     }
     return (
       <div>
-        <form
-          className='createCampusForm'
-          onSubmit={(e) => this.handleSubmit(e)}
-        >
+        <form className='createForm' onSubmit={(e) => this.handleSubmit(e)}>
           <div>
             <label>Name:</label>
             <input
@@ -88,6 +85,7 @@ class CreateCampus extends Component {
               onChange={(e) => this.handleChange(e)}
             />
           </div>
+          <br />
           <div>
             <input className='btn create-btn' type='submit' value='Submit' />
           </div>

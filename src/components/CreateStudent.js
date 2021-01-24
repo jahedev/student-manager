@@ -1,23 +1,23 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 
-import { Link, Redirect } from "react-router-dom"
+import { Link, Redirect } from 'react-router-dom'
 
 import {
   createStudent,
   getCampusById,
   getStudentById,
   getAllCampuses,
-} from "../redux/reducers"
-import { connect } from "react-redux"
+} from '../redux/reducers'
+import { connect } from 'react-redux'
 
 class CreateStudent extends Component {
   state = {
     redirect: false,
     studentInfo: {
-      first: "",
-      last: "",
-      email: "",
-      image: "",
+      first: '',
+      last: '',
+      email: '',
+      image: '',
       gpa: null,
       CampusId: null,
     },
@@ -46,12 +46,12 @@ class CreateStudent extends Component {
   }
 
   handleSubmit = (e) => {
-    console.log("CAMPUS ID IN SUBMIT FUNCT:", this.state.CampusId)
+    console.log('CAMPUS ID IN SUBMIT FUNCT:', this.state.CampusId)
     e.preventDefault()
     const { first, last, email, image, gpa, CampusId } = this.state.studentInfo
     if (!first || !last || !email || !image || !gpa) {
       console.warn(
-        "Please enter a value for all required (*) fields: studentname, email, image, gpa"
+        'Please enter a value for all required (*) fields: studentname, email, image, gpa'
       )
       return
     }
@@ -81,69 +81,58 @@ class CreateStudent extends Component {
     }
     return (
       <div>
-        <form onSubmit={(e) => this.handleSubmit(e)}>
+        <form className='createForm' onSubmit={(e) => this.handleSubmit(e)}>
           <div>
-            <label>
-              First:
-              <input
-                type="text"
-                name="first"
-                onChange={(e) => this.handleChange(e)}
-              />
-            </label>
+            <label>First:</label>
+            <input
+              type='text'
+              name='first'
+              onChange={(e) => this.handleChange(e)}
+            />
+          </div>
+          <div>
+            <label>Last:</label>
+            <input
+              type='text'
+              name='last'
+              onChange={(e) => this.handleChange(e)}
+            />
           </div>
 
           <div>
-            <label>
-              Last:
-              <input
-                type="text"
-                name="last"
-                onChange={(e) => this.handleChange(e)}
-              />
-            </label>
+            <label>Email:</label>
+            <input
+              type='email'
+              name='email'
+              onChange={(e) => this.handleChange(e)}
+            />
           </div>
 
           <div>
-            <label>
-              Email:
-              <input
-                type="email"
-                name="email"
-                onChange={(e) => this.handleChange(e)}
-              />
-            </label>
+            <label>Image:</label>
+            <input
+              type='text'
+              name='image'
+              onChange={(e) => this.handleChange(e)}
+            />
           </div>
 
           <div>
-            <label>
-              Image:
-              <input
-                type="text"
-                name="image"
-                onChange={(e) => this.handleChange(e)}
-              />
-            </label>
+            <label>GPA:</label>
+            <input
+              type='number'
+              step='0.01'
+              name='gpa'
+              onChange={(e) => this.handleChange(e)}
+            />
           </div>
-
           <div>
-            <label>
-              GPA:
-              <input
-                type="number"
-                step="0.01"
-                name="gpa"
-                onChange={(e) => this.handleChange(e)}
-              />
-            </label>
-          </div>
-
-          <div>
+            <label>Campus:</label>
             <select
-              name="campusSelect"
+              name='campusSelect'
               onChange={(e) => this.handleSelectChange(e)}
             >
-              <option value="">--Select a campus--</option>
+              <option value=''>--Select a campus--</option>
               {this.props.campuses !== undefined ? (
                 this.props.campuses.map((campus, index) => (
                   <option key={index} value={campus.id}>
@@ -155,9 +144,9 @@ class CreateStudent extends Component {
               )}
             </select>
           </div>
-
+          <br />
           <div>
-            <input type="submit" value="Submit" />
+            <input className='btn create-btn' type='submit' value='Submit' />
           </div>
         </form>
       </div>

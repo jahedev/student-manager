@@ -65,11 +65,12 @@ a {
   transition: all 0.2s;
 }
 
-.createCampusForm {
-  padding: 12px 20px;
+.createForm {
+  padding: 12px 10px;
   margin: 8px 0;
   box-sizing: border-box;
   display: inline-block;
+  width: 100%;
 }
 
 input {
@@ -78,6 +79,8 @@ input {
   border: 1px solid #333;
   border-radius: 5px;
   outline: none;
+  margin: 5px;
+  min-width: 150px;
 }
 
 input:hover {
@@ -88,6 +91,12 @@ label {
   font-size: 1.2rem;
   min-width: 150px;
   display: inline-block;
+}
+
+select {
+  padding: 8px 10px;
+  border-radius: 5px;
+  width: 185px;
 }
 
 .btn {
@@ -101,7 +110,8 @@ label {
 
 .create-btn {
   width: 100%;
-  padding: 7px 7px;
+  max-width: 185px;
+  padding: 10px 7px;
 }
 
 .create-btn:hover {
