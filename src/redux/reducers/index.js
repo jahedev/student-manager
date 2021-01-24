@@ -22,24 +22,29 @@ const initialState = {
 
 // POST -> Create
 
-const createdStudent = () => {
+const createdStudent = (data) => {
   return {
     type: CREATED_STUDENT,
+    data,
   }
 }
 
 export const createStudent = (studentInfo) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     try {
       console.log("creating student with this info:", studentInfo)
-      axios.post("http://localhost:8080/api/students/", {
+      const response = await axios.post("http://localhost:8080/api/students/", {
         studentname: studentInfo.studentname,
         email: studentInfo.email,
         image: studentInfo.image,
         gpa: studentInfo.gpa,
         CampusId: studentInfo.CampusId,
       })
-      dispatch(createdStudent())
+      console.log(
+        "************************************************************************"
+      )
+      console.log("axios response after creaing student:", response)
+      dispatch(createdStudent(response.data.student))
     } catch (error) {
       console.error(error)
     }
@@ -263,6 +268,7 @@ const rootReducer = (state = initialState, action) => {
     case CREATED_STUDENT:
       return {
         ...state,
+        student: action.data,
       }
     case UPDATED_STUDENT:
       return {

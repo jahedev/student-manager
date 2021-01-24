@@ -1,12 +1,13 @@
 import React, { Component } from "react"
 
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 
-import { createStudent } from "../redux/reducers"
+import { createStudent, getCampusById, getStudentById } from "../redux/reducers"
 import { connect } from "react-redux"
 
 class CreateStudent extends Component {
   state = {
+    redirect: false,
     studentInfo: {
       studentname: "",
       email: "",
@@ -14,8 +15,6 @@ class CreateStudent extends Component {
       gpa: null,
       CampusId: null,
     },
-    // Campus is optional, thus outside required fields obj of studentInfo
-    // CampusId: null,
   }
 
   handleChange = (e) => {
@@ -45,10 +44,22 @@ class CreateStudent extends Component {
 
     setTimeout(() => {
       this.props.createStudent(this.state.studentInfo)
-    }, 500)
+    }, 300)
+
+    // sets campus state to created student's campus so that campus redirect works in single student view after creation
+    setTimeout(() => {
+      this.props.getCampusById(this.props.student.CampusId)
+    }, 600)
+
+    setTimeout(() => {
+      this.setState({ redirect: true })
+    }, 800)
   }
 
   render() {
+    if (this.state.redirect === true) {
+      return <Redirect to={`/singleStudent/${this.props.student.id}`} />
+    }
     return (
       <div>
         <Link to="/">Return Home</Link>
@@ -121,12 +132,19 @@ class CreateStudent extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    student: state.student,
+    // needed for redirect, set to created student's campus on creation
+    campus: state.campus,
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     createStudent: (studentInfo) => dispatch(createStudent(studentInfo)),
+    getStudentById: (searchStudentId) =>
+      dispatch(getStudentById(searchStudentId)),
+    getCampusById: (searchCampusId) => dispatch(getCampusById(searchCampusId)),
   }
 }
 
