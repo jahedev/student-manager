@@ -26,9 +26,8 @@ class AllStudents extends Component {
 
   render() {
     return (
-      <div>
-        <Link to='/'>Return Home</Link>
-        <br />
+      <div className='container'>
+        <div className='half-bg-students'></div>
 
         <h1>All Students Component</h1>
 
