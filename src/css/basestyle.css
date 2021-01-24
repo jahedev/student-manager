@@ -53,6 +53,12 @@ body {
   color: #f0f0f0;
 }
 
+a {
+  transition: all 0.2s;
+}
+
+/* Non-Global Styles */
+
 .bg-whole {
   display: flex;
   background-repeat: no-repeat;
@@ -121,4 +127,20 @@ select {
 
 .create-btn:active {
   background-color: #048ade;
+}
+
+.half-bg-students {
+  display: flex;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(../images/students.jpg);
+  height: 50vh;
+}
+
+.half-bg-campuses {
+  display: flex;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(../images/campuses.jpg);
+  height: 50vh;
 }
