@@ -1,12 +1,13 @@
 import React, { Component } from "react"
 
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 
 import { connect } from "react-redux"
 import { createCampus } from "../redux/reducers"
 
 class CreateCampus extends Component {
   state = {
+    redirect: false,
     campusInfo: {
       campusname: "",
       image: "",
@@ -36,9 +37,16 @@ class CreateCampus extends Component {
     }
 
     this.props.createCampus(this.state.campusInfo)
+
+    setTimeout(() => {
+      this.setState({ redirect: true })
+    }, 500)
   }
 
   render() {
+    if (this.state.redirect === true) {
+      return <Redirect to={`/singleCampus/${this.props.campus.id}`} />
+    }
     return (
       <div>
         <Link to="/">Return Home</Link>
@@ -101,7 +109,9 @@ class CreateCampus extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    campus: state.campus,
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {

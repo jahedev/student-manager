@@ -51,22 +51,24 @@ export const createStudent = (studentInfo) => {
   }
 }
 
-const createdCampus = () => {
+const createdCampus = (data) => {
   return {
     type: CREATED_CAMPUS,
+    data,
   }
 }
 
 export const createCampus = (campusInfo) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     try {
-      axios.post("http://localhost:8080/api/campuses/", {
+      const response = await axios.post("http://localhost:8080/api/campuses/", {
         campusname: campusInfo.campusname,
         image: campusInfo.image,
         address: campusInfo.address,
         description: campusInfo.description,
       })
-      dispatch(createdCampus())
+      console.log("axios response after creating campus:", response)
+      dispatch(createdCampus(response.data.campus))
     } catch (error) {
       console.error(error)
     }
@@ -286,6 +288,7 @@ const rootReducer = (state = initialState, action) => {
     case CREATED_CAMPUS:
       return {
         ...state,
+        campus: action.data,
       }
     case UPDATED_CAMPUS:
       return {
