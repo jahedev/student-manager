@@ -1,12 +1,12 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 
-import { connect } from "react-redux"
-import { getAllStudents } from "../redux/reducers"
+import { connect } from 'react-redux'
+import { getAllStudents } from '../redux/reducers'
 
-import Student from "./Student"
-import CreateStudent from "./CreateStudent"
+import Student from './Student'
+import CreateStudent from './CreateStudent'
 
 class AllStudents extends Component {
   state = {
@@ -27,7 +27,7 @@ class AllStudents extends Component {
   render() {
     return (
       <div>
-        <Link to="/">Return Home</Link>
+        <Link to='/'>Return Home</Link>
         <br />
 
         <h1>All Students Component</h1>
