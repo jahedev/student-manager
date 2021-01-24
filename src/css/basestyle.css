@@ -61,9 +61,6 @@ body {
   height: 100vh;
 }
 
-.content-container {
-}
-
 a {
   transition: all 0.2s;
 }
@@ -87,23 +84,31 @@ input {
 input:hover {
   background-color: #ededed;
 }
-.submit {
-  font: 30px bold;
-  margin-top: 60px;
-  font-family: Arial, Helvetica, sans-serif;
-  padding-right: 20px;
-}
+
 label {
-  font: 24px bold;
-  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
   min-width: 150px;
   display: inline-block;
 }
 
-.submit:hover {
-  background-color: #33a3e9;
+.btn {
+  margin-top: 15px;
+  background-color: #048ade;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  border: none;
 }
 
-.submit:active {
-  background-color: rgb(124, 70, 131);
+.create-btn {
+  width: 100%;
+}
+
+.create-btn:hover {
+  transition: all 0.2s;
+  background-color: #21a6f9;
+}
+
+.create-btn:active {
+  background-color: #048ade;
 }
