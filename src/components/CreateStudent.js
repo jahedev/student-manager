@@ -32,7 +32,7 @@ class CreateStudent extends Component {
     e.preventDefault()
     const { studentname, email, image, gpa, CampusId } = this.state.studentInfo
     if (!studentname || !email || !image || !gpa) {
-      console.error(
+      console.warn(
         "Please enter a value for all required (*) fields: studentname, email, image, gpa"
       )
       return

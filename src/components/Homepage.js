@@ -16,6 +16,7 @@ class Homepage extends Component {
           <br />
           <Link to="/createStudent">Create Student</Link>
           <br />
+          <Link to="/createCampus">Create Campus</Link>
         </div>
       </div>
     )
