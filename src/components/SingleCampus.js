@@ -80,7 +80,7 @@ class SingleCampus extends Component {
           {this.props.campus !== undefined ? (
             <div>
               <p>Name: {this.props.campus.campusname}</p>
-              <p>Image: {this.props.campus.image}</p>
+              <img src={this.props.campus.image}/>
               <p>Address: {this.props.campus.address}</p>
               <p>Description: {this.props.campus.description}</p>
               <div>
