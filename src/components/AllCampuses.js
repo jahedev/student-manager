@@ -6,8 +6,13 @@ import { connect } from "react-redux"
 import { getAllCampuses } from "../redux/reducers"
 
 import Campus from "./Campus"
+import CreateCampus from "./CreateCampus"
 
 class AllCampuses extends Component {
+  state = {
+    addingCampus: false,
+  }
+
   async componentDidMount() {
     await this.fetchAllCampuses()
   }
@@ -26,6 +31,30 @@ class AllCampuses extends Component {
         <br />
 
         <h1>All Campuses Component</h1>
+
+        <div>
+          <button
+            onClick={() =>
+              this.setState({ addingCampus: !this.state.addingCampus })
+            }
+          >
+            Add Campus
+          </button>
+        </div>
+        {this.state.addingCampus === true ? (
+          <div>
+            <CreateCampus />
+            <div>
+              <button onClick={() => this.setState({ addingCampus: false })}>
+                Cancel Addition
+              </button>
+              <br />
+              <br />
+            </div>
+          </div>
+        ) : (
+          <br />
+        )}
 
         {this.props.campuses.campuses !== undefined ? (
           this.props.campuses.campuses.map((campus, index) => (
