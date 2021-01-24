@@ -127,7 +127,7 @@ class SingleStudent extends Component {
                     <p>This student is not enrolled in a campus.</p>
                   </div>
                 ) : (
-                  <Link to={`/singleCampus/${this.props.student.campusId}`}>
+                  <Link to={`/singleCampus/${this.props.student.CampusId}`}>
                     Campus: {this.props.campus.campusname}
                   </Link>
                 )}

@@ -18,8 +18,8 @@ class CreateStudent extends Component {
       last: "",
       email: "",
       image: "",
-      gpa: null,
-      CampusId: null,
+      gpa: "",
+      CampusId: "",
     },
   }
 
@@ -57,9 +57,9 @@ class CreateStudent extends Component {
     }
 
     // remove object property because backend won't accept empty property
-    if (!CampusId) {
-      delete this.state.studentInfo.CampusId
-    }
+    // if (!CampusId) {
+    //   delete this.state.studentInfo.CampusId
+    // }
 
     setTimeout(() => {
       this.props.createStudent(this.state.studentInfo)
