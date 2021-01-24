@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Castoro&family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Castoro&family=Lato&display=swap");
 
 * {
   margin: 0;
@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: Lato, Arial, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Lato, Arial, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -20,7 +20,7 @@ body {
 
 .navbar .logo {
   display: inline;
-  font-family: 'Castoro', serif;
+  font-family: "Castoro", serif;
   font-size: 1.2rem;
 }
 
@@ -61,9 +61,64 @@ body {
   height: 100vh;
 }
 
-.content-container {
-}
-
 a {
   transition: all 0.2s;
+}
+
+.createForm {
+  padding: 12px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+}
+
+input {
+  font-size: 1rem;
+  padding: 5px 7px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  outline: none;
+  margin: 5px;
+  min-width: 150px;
+}
+
+input:hover {
+  background-color: #ededed;
+}
+
+label {
+  font-size: 1.2rem;
+  min-width: 150px;
+  display: inline-block;
+}
+
+select {
+  padding: 8px 10px;
+  border-radius: 5px;
+  width: 185px;
+}
+
+.btn {
+  margin-top: 15px;
+  background-color: #048ade;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+.create-btn {
+  width: 100%;
+  max-width: 185px;
+  padding: 10px 7px;
+}
+
+.create-btn:hover {
+  transition: all 0.2s;
+  background-color: #21a6f9;
+}
+
+.create-btn:active {
+  background-color: #048ade;
 }
