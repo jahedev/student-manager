@@ -1,18 +1,18 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 
-import { Link, Redirect } from "react-router-dom"
+import { Link, Redirect } from 'react-router-dom'
 
-import { createStudent, getCampusById, getStudentById } from "../redux/reducers"
-import { connect } from "react-redux"
+import { createStudent, getCampusById, getStudentById } from '../redux/reducers'
+import { connect } from 'react-redux'
 
 class CreateStudent extends Component {
   state = {
     redirect: false,
     studentInfo: {
-      first: "",
-      last: "",
-      email: "",
-      image: "",
+      first: '',
+      last: '',
+      email: '',
+      image: '',
       gpa: null,
       CampusId: null,
     },
@@ -28,12 +28,12 @@ class CreateStudent extends Component {
   }
 
   handleSubmit = (e) => {
-    console.log("CAMPUS ID IN SUBMIT FUNCT:", this.state.CampusId)
+    console.log('CAMPUS ID IN SUBMIT FUNCT:', this.state.CampusId)
     e.preventDefault()
     const { first, last, email, image, gpa, CampusId } = this.state.studentInfo
     if (!first || !last || !email || !image || !gpa) {
       console.warn(
-        "Please enter a value for all required (*) fields: studentname, email, image, gpa"
+        'Please enter a value for all required (*) fields: studentname, email, image, gpa'
       )
       return
     }
@@ -68,8 +68,8 @@ class CreateStudent extends Component {
             <label>
               First:
               <input
-                type="text"
-                name="first"
+                type='text'
+                name='first'
                 onChange={(e) => this.handleChange(e)}
               />
             </label>
@@ -79,8 +79,8 @@ class CreateStudent extends Component {
             <label>
               Last:
               <input
-                type="text"
-                name="last"
+                type='text'
+                name='last'
                 onChange={(e) => this.handleChange(e)}
               />
             </label>
@@ -90,8 +90,8 @@ class CreateStudent extends Component {
             <label>
               Email:
               <input
-                type="email"
-                name="email"
+                type='email'
+                name='email'
                 onChange={(e) => this.handleChange(e)}
               />
             </label>
@@ -101,8 +101,8 @@ class CreateStudent extends Component {
             <label>
               Image:
               <input
-                type="text"
-                name="image"
+                type='text'
+                name='image'
                 onChange={(e) => this.handleChange(e)}
               />
             </label>
@@ -112,9 +112,9 @@ class CreateStudent extends Component {
             <label>
               GPA:
               <input
-                type="number"
-                step="0.01"
-                name="gpa"
+                type='number'
+                step='0.01'
+                name='gpa'
                 onChange={(e) => this.handleChange(e)}
               />
             </label>
@@ -124,15 +124,15 @@ class CreateStudent extends Component {
             <label>
               Campus Id:
               <input
-                type="number"
-                name="CampusId"
+                type='number'
+                name='CampusId'
                 onChange={(e) => this.handleChange(e)}
               />
             </label>
           </div>
 
           <div>
-            <input type="submit" value="Submit" />
+            <input type='submit' value='Submit' />
           </div>
         </form>
       </div>

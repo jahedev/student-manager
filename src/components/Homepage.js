@@ -1,20 +1,14 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
+import Navbar from "./Navbar"
 
 class Homepage extends Component {
   render() {
     return (
-      <div>
-        <div>
-          <h1>Homepage</h1>
-        </div>
-
-        <div>
-          <Link to="/allStudents">All Students</Link>
-          <br />
-          <Link to="/allCampuses">All Campuses</Link>
-          <br />
-        </div>
+      <div className="container">
+        {/* <Navbar /> */}
+        {/* <h1>homepage</h1> */}
+        <div className="bg-whole"></div>
       </div>
     )
   }

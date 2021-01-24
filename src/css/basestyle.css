@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Castoro&family=Lato&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Lato, Arial, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+}
+
+.navbar {
+  background-color: #f5f5f5;
+}
+
+.navbar .logo {
+  display: inline;
+  font-family: 'Castoro', serif;
+  font-size: 1.2rem;
+}
+
+.navbar .logo a {
+  color: #23120b;
+}
+
+.navbar .logo a:hover {
+  color: #33a3e9;
+}
+
+.navbar .links {
+  display: inline;
+}
+
+.navbar a {
+  display: inline-block;
+  color: #23120b;
+  margin: 0 10px;
+  text-decoration: none;
+  padding: 10px 10px;
+}
+
+.navbar .links a {
+  margin-top: 5px;
+}
+
+.navbar .links a:hover {
+  background-color: #048ade;
+  color: #f0f0f0;
+}
+
+.bg-whole {
+  display: flex;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(../images/homepage.jpg);
+  height: 100vh;
+}
+
+.content-container {
+}
+
+a {
+  transition: all 0.2s;
+}

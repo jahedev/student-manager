@@ -8,12 +8,16 @@ import SingleStudent from "./components/SingleStudent"
 import CreateStudent from "./components/CreateStudent"
 import SingleCampus from "./components/SingleCampus"
 import CreateCampus from "./components/CreateCampus"
+import Navbar from "./components/Navbar"
+
+import "./css/basestyle.css"
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Router basename={process.env.PUBLIC_URL}>
+          <Navbar />
           <Switch>
             <Route exact path="/" component={Homepage} />
             <Route path="/allStudents" component={AllStudents} />
