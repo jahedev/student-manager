@@ -62,9 +62,6 @@ class CreateStudent extends Component {
     }
     return (
       <div>
-        <Link to="/">Return Home</Link>
-        <p>create student component</p>
-
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <div>
             <label>

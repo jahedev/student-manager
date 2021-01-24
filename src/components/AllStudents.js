@@ -6,9 +6,13 @@ import { connect } from "react-redux"
 import { getAllStudents } from "../redux/reducers"
 
 import Student from "./Student"
+import CreateStudent from "./CreateStudent"
 
 class AllStudents extends Component {
-  // if we want all students to be displayed on button click only, comment out this function
+  state = {
+    addingStudent: false,
+  }
+
   async componentDidMount() {
     await this.fetchAllStudents()
   }
@@ -28,8 +32,29 @@ class AllStudents extends Component {
 
         <h1>All Students Component</h1>
 
-        {/* arrow function below resloves "props" being underfined in fetchAllStudents, before: this.fetchAllStudents */}
-        {/* BUTTON NOT NEEDED <button onClick={() => this.fetchAllStudents()}>All Students</button> */}
+        <div>
+          <button
+            onClick={() =>
+              this.setState({ addingStudent: !this.state.addingStudent })
+            }
+          >
+            Add Student
+          </button>
+        </div>
+        {this.state.addingStudent === true ? (
+          <div>
+            <CreateStudent />
+            <div>
+              <button onClick={() => this.setState({ addingStudent: false })}>
+                Cancel Addition
+              </button>
+              <br />
+              <br />
+            </div>
+          </div>
+        ) : (
+          <br />
+        )}
 
         {this.props.students !== undefined ? (
           this.props.students.map((student, index) => (

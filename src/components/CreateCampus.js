@@ -49,11 +49,6 @@ class CreateCampus extends Component {
     }
     return (
       <div>
-        <Link to="/">Return Home</Link>
-        <br />
-
-        <p>create campus component</p>
-
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <div>
             <label>
