@@ -125,10 +125,9 @@ class SingleCampus extends Component {
                       </div>
                     ) : (
                       this.props.campus.Students.map((student, index) => (
-                        <div>
+                        <div key={index}>
                           <p>Students:</p>
                           <Student
-                            key={index}
                             id={student.id}
                             first={student.first}
                             last={student.last}

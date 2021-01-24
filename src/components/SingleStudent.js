@@ -1,7 +1,12 @@
 import React, { Component } from "react"
 
 import { connect } from "react-redux"
-import { deleteStudent, getStudentById, updateStudent } from "../redux/reducers"
+import {
+  deleteStudent,
+  getStudentById,
+  updateStudent,
+  getCampusById,
+} from "../redux/reducers"
 import { Link, Redirect } from "react-router-dom"
 
 class SingleStudent extends Component {
@@ -21,6 +26,9 @@ class SingleStudent extends Component {
 
   componentDidMount = async () => {
     await this.props.getStudentById(this.props.match.params.id)
+    setTimeout(() => {
+      this.props.getCampusById(this.props.student.CampusId)
+    }, 300)
   }
 
   handleSubmit = async () => {
@@ -108,7 +116,7 @@ class SingleStudent extends Component {
                   </div>
                 ) : (
                   <Link to={`/singleCampus/${this.props.student.campusId}`}>
-                    CampusId: {this.props.student.CampusId}
+                    Campus: {this.props.campus.campusname}
                   </Link>
                 )}
               </div>
@@ -235,6 +243,7 @@ class SingleStudent extends Component {
 const mapStateToProps = (state) => {
   return {
     student: state.student,
+    campus: state.campus,
   }
 }
 
@@ -245,6 +254,7 @@ const mapDispatchToProps = (dispatch) => {
     deleteStudent: (deleteStudentId) =>
       dispatch(deleteStudent(deleteStudentId)),
     updateStudent: (studentInfo) => dispatch(updateStudent(studentInfo)),
+    getCampusById: (searchCampusId) => dispatch(getCampusById(searchCampusId)),
   }
 }
 
