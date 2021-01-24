@@ -34,7 +34,8 @@ export const createStudent = (studentInfo) => {
     try {
       console.log("creating student with this info:", studentInfo)
       const response = await axios.post("http://localhost:8080/api/students/", {
-        studentname: studentInfo.studentname,
+        first: studentInfo.first,
+        last: studentInfo.last,
         email: studentInfo.email,
         image: studentInfo.image,
         gpa: studentInfo.gpa,
@@ -172,7 +173,8 @@ export const updateStudent = (studentInfo) => {
     try {
       console.log("student info in updateStudent function redux:", studentInfo)
       axios.put(`http://localhost:8080/api/students/${studentInfo.id}`, {
-        studentname: studentInfo.studentname,
+        first: studentInfo.first,
+        last: studentInfo.last,
         email: studentInfo.email,
         image: studentInfo.image,
         gpa: studentInfo.gpa,

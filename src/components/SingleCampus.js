@@ -130,7 +130,8 @@ class SingleCampus extends Component {
                           <Student
                             key={index}
                             id={student.id}
-                            studentname={student.studentname}
+                            first={student.first}
+                            last={student.last}
                             email={student.email}
                             image={student.image}
                             gpa={student.gpa}

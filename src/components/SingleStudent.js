@@ -10,7 +10,8 @@ class SingleStudent extends Component {
     editing: false,
     studentInfo: {
       id: this.props.match.params.id,
-      studentname: this.props.student.studentname,
+      first: this.props.student.first,
+      last: this.props.student.last,
       email: this.props.student.email,
       image: this.props.student.image,
       gpa: this.props.student.gpa,
@@ -94,7 +95,9 @@ class SingleStudent extends Component {
           </div>
           {this.props.student !== undefined ? (
             <div>
-              <p>Name: {this.props.student.studentname}</p>
+              <p>
+                Name: {this.props.student.first} {this.props.student.last}
+              </p>
               <p>Email: {this.props.student.email}</p>
               <p>Image: {this.props.student.image}</p>
               <p>GPA: {this.props.student.gpa}</p>
@@ -138,11 +141,23 @@ class SingleStudent extends Component {
           <form>
             <div>
               <label>
-                Name:
+                First:
                 <input
                   type="text"
-                  name="studentname"
-                  placeholder={this.props.student.studentname}
+                  name="first"
+                  placeholder={this.props.student.first}
+                  onChange={(e) => this.handleEditChange(e)}
+                />
+              </label>
+            </div>
+
+            <div>
+              <label>
+                Last:
+                <input
+                  type="text"
+                  name="last"
+                  placeholder={this.props.student.last}
                   onChange={(e) => this.handleEditChange(e)}
                 />
               </label>

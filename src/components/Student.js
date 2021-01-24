@@ -6,12 +6,14 @@ import DeleteStudent from "./DeleteStudent"
 
 class Student extends Component {
   render() {
-    const { id, studentname, email, image, gpa, CampusId } = this.props
-    console.log(id, ":", studentname)
+    const { id, first, last, email, image, gpa, CampusId } = this.props
+    console.log(id, ":", first, last)
     return (
       <div>
         <DeleteStudent id={id} CampusId={CampusId} />
-        <Link to={`/singleStudent/${id}`}>Name: {studentname}</Link>
+        <Link to={`/singleStudent/${id}`}>
+          Name: {first} {last}
+        </Link>
         {/* Requirements just want student names displayed on all students */}
         {/* <p>Email: {email}</p> */}
         {/* <p>Image: {image}</p> */}

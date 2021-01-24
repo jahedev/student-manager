@@ -9,7 +9,8 @@ class CreateStudent extends Component {
   state = {
     redirect: false,
     studentInfo: {
-      studentname: "",
+      first: "",
+      last: "",
       email: "",
       image: "",
       gpa: null,
@@ -29,8 +30,8 @@ class CreateStudent extends Component {
   handleSubmit = (e) => {
     console.log("CAMPUS ID IN SUBMIT FUNCT:", this.state.CampusId)
     e.preventDefault()
-    const { studentname, email, image, gpa, CampusId } = this.state.studentInfo
-    if (!studentname || !email || !image || !gpa) {
+    const { first, last, email, image, gpa, CampusId } = this.state.studentInfo
+    if (!first || !last || !email || !image || !gpa) {
       console.warn(
         "Please enter a value for all required (*) fields: studentname, email, image, gpa"
       )
@@ -65,10 +66,21 @@ class CreateStudent extends Component {
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <div>
             <label>
-              Name:
+              First:
               <input
                 type="text"
-                name="studentname"
+                name="first"
+                onChange={(e) => this.handleChange(e)}
+              />
+            </label>
+          </div>
+
+          <div>
+            <label>
+              Last:
+              <input
+                type="text"
+                name="last"
                 onChange={(e) => this.handleChange(e)}
               />
             </label>
