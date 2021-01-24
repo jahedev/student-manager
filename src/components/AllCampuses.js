@@ -56,8 +56,8 @@ class AllCampuses extends Component {
           <br />
         )}
 
-        {this.props.campuses.campuses !== undefined ? (
-          this.props.campuses.campuses.map((campus, index) => (
+        {this.props.campuses !== undefined ? (
+          this.props.campuses.map((campus, index) => (
             <Campus
               key={index}
               id={campus.id}

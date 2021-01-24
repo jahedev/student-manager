@@ -110,7 +110,7 @@ export const getAllCampuses = () => {
     try {
       const response = await axios.get("http://localhost:8080/api/campuses/")
       console.log("getAllCampuses axios response", response)
-      dispatch(gotAllCampuses(response.data))
+      dispatch(gotAllCampuses(response.data.campuses))
     } catch (error) {
       console.error(error)
     }

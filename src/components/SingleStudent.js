@@ -6,6 +6,7 @@ import {
   getStudentById,
   updateStudent,
   getCampusById,
+  getAllCampuses,
 } from "../redux/reducers"
 import { Link, Redirect } from "react-router-dom"
 
@@ -26,6 +27,7 @@ class SingleStudent extends Component {
 
   componentDidMount = async () => {
     await this.props.getStudentById(this.props.match.params.id)
+    await this.props.getAllCampuses()
     setTimeout(() => {
       this.props.getCampusById(this.props.student.CampusId)
     }, 300)
@@ -42,6 +44,15 @@ class SingleStudent extends Component {
     }, 400)
   }
 
+  handleSelectChange = (e) => {
+    this.setState({
+      studentInfo: {
+        ...this.state.studentInfo,
+        CampusId: e.target.value,
+      },
+    })
+  }
+
   handleEditChange = (e) => {
     this.setState({
       studentInfo: {
@@ -54,10 +65,6 @@ class SingleStudent extends Component {
   handleEditSubmit = (e) => {
     e.preventDefault()
 
-    // if (!this.state.studentInfo.CampusId) {
-    //   delete this.state.studentInfo.CampusId
-    // }
-
     if (!this.state.studentInfo.CampusId) {
       this.setState({
         studentInfo: {
@@ -65,6 +72,10 @@ class SingleStudent extends Component {
           CampusId: null,
         },
       })
+    } else {
+      setTimeout(() => {
+        this.props.getCampusById(this.state.studentInfo.CampusId)
+      }, 100)
     }
 
     setTimeout(() => {
@@ -85,6 +96,7 @@ class SingleStudent extends Component {
   }
 
   render() {
+    console.log("this.props.campuses:", this.props.campuses)
     if (this.state.redirect === true) {
       return <Redirect to="/allStudents" />
     }
@@ -209,15 +221,21 @@ class SingleStudent extends Component {
             </div>
 
             <div>
-              <label>
-                CampusId:
-                <input
-                  type="number"
-                  name="CampusId"
-                  placeholder={this.props.student.CampusId}
-                  onChange={(e) => this.handleEditChange(e)}
-                />
-              </label>
+              <select
+                name="campusSelect"
+                onChange={(e) => this.handleSelectChange(e)}
+              >
+                <option value="">--Select a campus--</option>
+                {this.props.campuses !== undefined ? (
+                  this.props.campuses.map((campus, index) => (
+                    <option key={index} value={campus.id}>
+                      {campus.campusname}
+                    </option>
+                  ))
+                ) : (
+                  <span />
+                )}
+              </select>
             </div>
 
             <div>
@@ -244,6 +262,7 @@ const mapStateToProps = (state) => {
   return {
     student: state.student,
     campus: state.campus,
+    campuses: state.campuses,
   }
 }
 
@@ -255,6 +274,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(deleteStudent(deleteStudentId)),
     updateStudent: (studentInfo) => dispatch(updateStudent(studentInfo)),
     getCampusById: (searchCampusId) => dispatch(getCampusById(searchCampusId)),
+    getAllCampuses: () => dispatch(getAllCampuses()),
   }
 }
 
