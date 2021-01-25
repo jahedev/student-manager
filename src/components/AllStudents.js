@@ -7,6 +7,7 @@ import { getAllStudents } from '../redux/reducers'
 
 import Student from './Student'
 import CreateStudent from './CreateStudent'
+import HalfHeaderBG from './HalfHeaderBG'
 
 class AllStudents extends Component {
   state = {
@@ -27,10 +28,7 @@ class AllStudents extends Component {
   render() {
     return (
       <div className='container'>
-        <div className='half-bg-students'></div>
-
-        <h1>All Students Component</h1>
-
+        <HalfHeaderBG imgdiv='half-bg-students' title='All Students' />
         <div>
           <button
             onClick={() =>
@@ -42,7 +40,7 @@ class AllStudents extends Component {
         </div>
         {this.state.addingStudent === true ? (
           <div>
-            <CreateStudent />
+            <CreateStudent showHeader={false} />
             <div>
               <button onClick={() => this.setState({ addingStudent: false })}>
                 Cancel Addition

@@ -10,6 +10,7 @@ class Homepage extends Component {
         <div className='bg-whole'>
           <div className='middle-align'>
             <h1 className='homepage-header'>CRUD APPLICATION</h1>
+            <br />
             <h3 className='homepage-subtitle'>
               Team: Karim Nekzad, Marin Kocollari, M. Jahed Hossain, Hassan
               Akbar

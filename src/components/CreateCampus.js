@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 import { createCampus } from '../redux/reducers'
+import HalfHeaderBG from './HalfHeaderBG'
 
 class CreateCampus extends Component {
   state = {
@@ -47,8 +48,16 @@ class CreateCampus extends Component {
     if (this.state.redirect === true) {
       return <Redirect to={`/singleCampus/${this.props.campus.id}`} />
     }
+
+    let HEADER = (
+      <HalfHeaderBG imgdiv='half-bg-campuses' title='Create A Campus' />
+    )
+    if (this.props.showHeader === false) HEADER = ''
+
     return (
-      <div>
+      <div className='container'>
+        {HEADER}
+
         <form className='createForm' onSubmit={(e) => this.handleSubmit(e)}>
           <div>
             <label>Name:</label>
