@@ -16,7 +16,7 @@ class DeleteCampus extends Component {
   render() {
     return (
       <div>
-        <button onClick={() => this.handleDelete()}>Delete Campus</button>
+        <button onClick={() => this.handleDelete()} className="deleteCampusButton">Delete Campus</button>
       </div>
     )
   }
