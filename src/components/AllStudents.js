@@ -31,6 +31,7 @@ class AllStudents extends Component {
         <HalfHeaderBG imgdiv='half-bg-students' title='All Students' />
         <div>
           <button
+            className='green-btn'
             onClick={() =>
               this.setState({ addingStudent: !this.state.addingStudent })
             }

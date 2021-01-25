@@ -1,11 +1,11 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 
-import { connect } from "react-redux"
-import { deleteStudent, getAllStudents, getCampusById } from "../redux/reducers"
+import { connect } from 'react-redux'
+import { deleteStudent, getAllStudents, getCampusById } from '../redux/reducers'
 
 class DeleteStudent extends Component {
   handleSubmit = async () => {
-    console.log("student to be deleted with id:", this.props.id)
+    console.log('student to be deleted with id:', this.props.id)
     await this.props.deleteStudent(this.props.id)
 
     setTimeout(() => {
@@ -21,7 +21,9 @@ class DeleteStudent extends Component {
   render() {
     return (
       <div>
-        <button onClick={() => this.handleSubmit()}>Delete student</button>
+        <button className='red-btn' onClick={() => this.handleSubmit()}>
+          Delete student
+        </button>
       </div>
     )
   }

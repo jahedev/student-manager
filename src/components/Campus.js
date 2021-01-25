@@ -1,26 +1,20 @@
 import React, { Component } from "react"
 
 import { Link } from "react-router-dom"
-import AllStudents from "./AllStudents"
 
 import DeleteCampus from "./DeleteCampus"
-import Student from "./Student"
 
 class Campus extends Component {
   render() {
     const { id, campusname, image, address, description, Students } = this.props
     return (
-      <div className="campus">
-        <DeleteCampus CampusId={id}/>
-        <Link to={`/singleCampus/${id}`}
-         className="campusNames">{campusname}
-        <p className="description">{description}</p>
-        </Link>
-        <img src={image} className="campusImages"/>
-        <div className="totalStudents">Students: {Students.length}</div>
+      <div>
+        <Link to={`/singleCampus/${id}`}>Campus Name: {campusname}</Link>
+        <p>Image: {image}</p>
         {/* Requirements just want campus name and image displayed on all campuses */}
         {/* <p>Address: {address}</p> */}
         {/* <p>Description: {description}</p> */}
+        <DeleteCampus CampusId={id} />
       </div>
     )
   }
