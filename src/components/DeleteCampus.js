@@ -1,11 +1,11 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 
-import { connect } from "react-redux"
-import { deleteCampus, getAllCampuses } from "../redux/reducers"
+import { connect } from 'react-redux'
+import { deleteCampus, getAllCampuses } from '../redux/reducers'
 
 class DeleteCampus extends Component {
   handleDelete = () => {
-    console.log("campus to be deleted with id:", this.props.CampusId)
+    console.log('campus to be deleted with id:', this.props.CampusId)
     this.props.deleteCampus(this.props.CampusId)
 
     setTimeout(() => {
@@ -16,7 +16,9 @@ class DeleteCampus extends Component {
   render() {
     return (
       <div>
-        <button onClick={() => this.handleDelete()} className="deleteCampusButton">Delete Campus</button>
+        <button onClick={() => this.handleDelete()} className='red-btn'>
+          Delete Campus
+        </button>
       </div>
     )
   }

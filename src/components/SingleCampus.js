@@ -74,87 +74,91 @@ class SingleCampus extends Component {
             imgdiv='half-bg-campuses'
             title={this.props.campus.campusname}
           />
-          <div>
-            <button onClick={() => this.handleDelete()}>Delete Campus</button>
-          </div>
-          {this.props.campus !== undefined ? (
+          <div className='content'>
             <div>
-              <p>Name: {this.props.campus.campusname}</p>
-              <p>Image: {this.props.campus.image}</p>
-              <p>Address: {this.props.campus.address}</p>
-              <p>Description: {this.props.campus.description}</p>
-              <div>
-                <button onClick={() => this.setState({ editing: true })}>
-                  Edit Campus
-                </button>
-              </div>
-              <div>
-                <button
-                  className='green-btn'
-                  onClick={() =>
-                    this.setState({ addingStudent: !this.state.addingStudent })
-                  }
-                >
-                  Add Student
-                </button>
-              </div>
-              {this.state.addingStudent === true ? (
-                <div>
-                  <div>
-                    <CreateStudent showHeader={false} />
-                  </div>
-                  <div>
-                    <button
-                      onClick={() => this.setState({ addingStudent: false })}
-                    >
-                      Cancel Addition
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <span />
-              )}
-              <div>
-                <div>
-                  {this.props.campus.Students !== undefined ? (
-                    this.props.campus.Students.length === 0 ? (
-                      <div>
-                        <p>
-                          This campus does not have any students enrolled at the
-                          moment.
-                        </p>
-                      </div>
-                    ) : (
-                      this.props.campus.Students.map((student, index) => (
-                        <div key={index}>
-                          <p>Students:</p>
-                          <Student
-                            id={student.id}
-                            first={student.first}
-                            last={student.last}
-                            email={student.email}
-                            image={student.image}
-                            gpa={student.gpa}
-                            CampusId={student.CampusId}
-                          />
-                        </div>
-                      ))
-                    )
-                  ) : (
-                    <br />
-                  )}
-                </div>
-              </div>
+              <button onClick={() => this.handleDelete()}>Delete Campus</button>
             </div>
-          ) : (
-            <br />
-          )}
+            {this.props.campus !== undefined ? (
+              <div>
+                <img src={this.props.campus.image} className='campusImages' />
+                <p>Name: {this.props.campus.campusname}</p>
+                <p>Address: {this.props.campus.address}</p>
+                <p>Description: {this.props.campus.description}</p>
+                <div>
+                  <button onClick={() => this.setState({ editing: true })}>
+                    Edit Campus
+                  </button>
+                </div>
+                <div>
+                  <button
+                    className='green-btn'
+                    onClick={() =>
+                      this.setState({
+                        addingStudent: !this.state.addingStudent,
+                      })
+                    }
+                  >
+                    Add Student
+                  </button>
+                </div>
+                {this.state.addingStudent === true ? (
+                  <div>
+                    <div>
+                      <CreateStudent showHeader={false} />
+                    </div>
+                    <div>
+                      <button
+                        onClick={() => this.setState({ addingStudent: false })}
+                      >
+                        Cancel Addition
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <span />
+                )}
+                <div>
+                  <div>
+                    {this.props.campus.Students !== undefined ? (
+                      this.props.campus.Students.length === 0 ? (
+                        <div>
+                          <p>
+                            This campus does not have any students enrolled at
+                            the moment.
+                          </p>
+                        </div>
+                      ) : (
+                        this.props.campus.Students.map((student, index) => (
+                          <div key={index}>
+                            <p>Students:</p>
+                            <Student
+                              id={student.id}
+                              first={student.first}
+                              last={student.last}
+                              email={student.email}
+                              image={student.image}
+                              gpa={student.gpa}
+                              CampusId={student.CampusId}
+                            />
+                          </div>
+                        ))
+                      )
+                    ) : (
+                      <br />
+                    )}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <br />
+            )}
 
-          {/* <div>
+            {/* <div>
             <button onClick={() => this.setState({ editing: true })}>
-              Edit
+            Edit
             </button>
           </div> */}
+          </div>
         </div>
       )
     } else {

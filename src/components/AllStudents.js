@@ -56,16 +56,19 @@ class AllStudents extends Component {
 
         {this.props.students !== undefined ? (
           this.props.students.map((student, index) => (
-            <Student
-              key={index}
-              id={student.id}
-              first={student.first}
-              last={student.last}
-              email={student.email}
-              image={student.image}
-              gpa={student.gpa}
-              CampusId={student.CampusId}
-            />
+            <div className='student-container' key={index}>
+              <Student
+                id={student.id}
+                first={student.first}
+                last={student.last}
+                email={student.email}
+                image={student.image}
+                gpa={student.gpa}
+                CampusId={student.CampusId}
+              />
+              <br />
+              <br />
+            </div>
           ))
         ) : (
           <br />

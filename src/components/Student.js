@@ -9,8 +9,11 @@ class Student extends Component {
     const { id, first, last, email, image, gpa, CampusId } = this.props
     console.log(id, ':', first, last)
     return (
-      <div>
-        <Link to={`/singleStudent/${id}`}>
+      <div className='center-text'>
+        <div>
+          <img alt='Student Image' src={image} className='studentImages' />
+        </div>
+        <Link className='student-link' to={`/singleStudent/${id}`}>
           Name: {first} {last}
         </Link>
         {/* Requirements just want student names displayed on all students */}
