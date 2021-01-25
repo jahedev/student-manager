@@ -168,3 +168,11 @@ select {
   background-image: url(../images/campuses.jpg);
   height: 50vh;
 }
+
+.half-bg-study {
+  display: flex;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(../images/study.jpg);
+  height: 50vh;
+}

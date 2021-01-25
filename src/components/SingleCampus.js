@@ -1,12 +1,13 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 
-import { Link, Redirect } from "react-router-dom"
+import { Link, Redirect } from 'react-router-dom'
 
-import { connect } from "react-redux"
-import { getCampusById, updateCampus, deleteCampus } from "../redux/reducers"
+import { connect } from 'react-redux'
+import { getCampusById, updateCampus, deleteCampus } from '../redux/reducers'
 
-import Student from "./Student"
-import CreateStudent from "./CreateStudent"
+import Student from './Student'
+import CreateStudent from './CreateStudent'
+import HalfHeaderBG from './HalfHeaderBG'
 
 class SingleCampus extends Component {
   state = {
@@ -62,18 +63,17 @@ class SingleCampus extends Component {
   }
 
   render() {
-    console.log("Students of campus:", this.props.campus.Students)
+    console.log('Students of campus:', this.props.campus.Students)
     if (this.state.redirect === true) {
-      return <Redirect to="/allCampuses" />
+      return <Redirect to='/allCampuses' />
     }
     if (!this.state.editing) {
       return (
         <div>
-          <Link to="/allCampuses">All Campuses</Link>
-          <br />
-          <Link to="/">Return Home</Link>
-          <br />
-
+          <HalfHeaderBG
+            imgdiv='half-bg-campuses'
+            title={this.props.campus.campusname}
+          />
           <div>
             <button onClick={() => this.handleDelete()}>Delete Campus</button>
           </div>
@@ -159,53 +159,49 @@ class SingleCampus extends Component {
     } else {
       return (
         <div>
-          <form onSubmit={(e) => this.handleEditSubmit(e)}>
+          <HalfHeaderBG imgdiv='half-bg-campuses' title='Edit Campus' />
+          <form
+            className='createForm'
+            onSubmit={(e) => this.handleEditSubmit(e)}
+          >
             <div>
-              <label>
-                Name:
-                <input
-                  type="text"
-                  name="campusname"
-                  placeholder={this.props.campus.campusname}
-                  onChange={(e) => this.handleEditChange(e)}
-                />
-              </label>
+              <label>Name:</label>
+              <input
+                type='text'
+                name='campusname'
+                placeholder={this.props.campus.campusname}
+                onChange={(e) => this.handleEditChange(e)}
+              />
             </div>
 
             <div>
-              <label>
-                Image:
-                <input
-                  type="text"
-                  name="image"
-                  placeholder={this.props.campus.image}
-                  onChange={(e) => this.handleEditChange(e)}
-                />
-              </label>
+              <label>Image:</label>
+              <input
+                type='text'
+                name='image'
+                placeholder={this.props.campus.image}
+                onChange={(e) => this.handleEditChange(e)}
+              />
             </div>
 
             <div>
-              <label>
-                Address:
-                <input
-                  type="text"
-                  name="address"
-                  placeholder={this.props.campus.address}
-                  onChange={(e) => this.handleEditChange(e)}
-                />
-              </label>
+              <label>Address:</label>
+              <input
+                type='text'
+                name='address'
+                placeholder={this.props.campus.address}
+                onChange={(e) => this.handleEditChange(e)}
+              />
             </div>
 
             <div>
-              <label>
-                Description:
-                <input
-                  type="text"
-                  name="description"
-                  placeholder={this.props.campus.description}
-                  onChange={(e) => this.handleEditChange(e)}
-                />
-              </label>
+              <label>Description:</label>
+              <input
+                type='text'
+                name='description'
+                placeholder={this.props.campus.description}
+                onChange={(e) => this.handleEditChange(e)}
+              />
             </div>
 
             <div>
@@ -215,7 +211,7 @@ class SingleCampus extends Component {
             </div>
 
             <div>
-              <input type="submit" value="Submit" />
+              <input type='submit' value='Submit' />
             </div>
           </form>
         </div>

@@ -1,14 +1,15 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 
-import { connect } from "react-redux"
+import { connect } from 'react-redux'
 import {
   deleteStudent,
   getStudentById,
   updateStudent,
   getCampusById,
   getAllCampuses,
-} from "../redux/reducers"
-import { Link, Redirect } from "react-router-dom"
+} from '../redux/reducers'
+import { Link, Redirect } from 'react-router-dom'
+import HalfHeaderBG from './HalfHeaderBG'
 
 class SingleStudent extends Component {
   state = {
@@ -34,7 +35,7 @@ class SingleStudent extends Component {
   }
 
   handleSubmit = async () => {
-    console.log("student to be deleted with id:", this.props.match.params.id)
+    console.log('student to be deleted with id:', this.props.match.params.id)
     await this.props.deleteStudent(this.props.student.id)
 
     setTimeout(() => {
@@ -79,7 +80,7 @@ class SingleStudent extends Component {
     }
 
     setTimeout(() => {
-      console.log("DATA SENDING AS UPDATE INFO:", this.state.studentInfo)
+      console.log('DATA SENDING AS UPDATE INFO:', this.state.studentInfo)
       this.props.updateStudent(this.state.studentInfo)
     }, 200)
 
@@ -96,27 +97,26 @@ class SingleStudent extends Component {
   }
 
   render() {
-    console.log("this.props.campuses:", this.props.campuses)
+    console.log('this.props.campuses:', this.props.campuses)
     if (this.state.redirect === true) {
-      return <Redirect to="/allStudents" />
+      return <Redirect to='/allStudents' />
     }
-    console.log("url param id:", this.props.match.params.id)
+    console.log('url param id:', this.props.match.params.id)
 
     if (!this.state.editing) {
       return (
         <div>
-          <Link to="/allStudents">All Students</Link>
-          <br />
-          <Link to="/">Return Home</Link>
-          <br />
-
+          <HalfHeaderBG
+            imgdiv='half-bg-study'
+            title={this.props.student.first + ' ' + this.props.student.last}
+          />
           <div>
             <button onClick={() => this.handleSubmit()}>Delete student</button>
           </div>
           {this.props.student !== undefined ? (
             <div>
               <p>
-                Name: {this.props.student.first} {this.props.student.last}
+                Name: {this.props.student.first + ' ' + this.props.student.last}
               </p>
               <p>Email: {this.props.student.email}</p>
               <p>Image: {this.props.student.image}</p>
@@ -157,75 +157,66 @@ class SingleStudent extends Component {
     } else {
       return (
         <div>
-          {/* edit form */}
-          <form>
+          <HalfHeaderBG imgdiv='half-bg-study' title='Edit Student' />
+          <form className='createForm'>
             <div>
-              <label>
-                First:
-                <input
-                  type="text"
-                  name="first"
-                  placeholder={this.props.student.first}
-                  onChange={(e) => this.handleEditChange(e)}
-                />
-              </label>
+              <label>First:</label>
+              <input
+                type='text'
+                name='first'
+                placeholder={this.props.student.first}
+                onChange={(e) => this.handleEditChange(e)}
+              />
             </div>
 
             <div>
-              <label>
-                Last:
-                <input
-                  type="text"
-                  name="last"
-                  placeholder={this.props.student.last}
-                  onChange={(e) => this.handleEditChange(e)}
-                />
-              </label>
+              <label>Last:</label>
+              <input
+                type='text'
+                name='last'
+                placeholder={this.props.student.last}
+                onChange={(e) => this.handleEditChange(e)}
+              />
             </div>
 
             <div>
-              <label>
-                Email:
-                <input
-                  type="email"
-                  name="email"
-                  placeholder={this.props.student.email}
-                  onChange={(e) => this.handleEditChange(e)}
-                />
-              </label>
+              <label>Email:</label>
+              <input
+                type='email'
+                name='email'
+                placeholder={this.props.student.email}
+                onChange={(e) => this.handleEditChange(e)}
+              />
             </div>
 
             <div>
-              <label>
-                Image:
-                <input
-                  type="text"
-                  name="image"
-                  placeholder={this.props.student.image}
-                  onChange={(e) => this.handleEditChange(e)}
-                />
-              </label>
+              <label>Image:</label>
+              <input
+                type='text'
+                name='image'
+                placeholder={this.props.student.image}
+                onChange={(e) => this.handleEditChange(e)}
+              />
             </div>
 
             <div>
-              <label>
-                GPA:
-                <input
-                  type="number"
-                  step="0.01"
-                  name="gpa"
-                  placeholder={this.props.student.gpa}
-                  onChange={(e) => this.handleEditChange(e)}
-                />
-              </label>
+              <label>GPA:</label>
+              <input
+                type='number'
+                step='0.01'
+                name='gpa'
+                placeholder={this.props.student.gpa}
+                onChange={(e) => this.handleEditChange(e)}
+              />
             </div>
 
             <div>
+              <label>Place in Campus:</label>
               <select
-                name="campusSelect"
+                name='campusSelect'
                 onChange={(e) => this.handleSelectChange(e)}
               >
-                <option value="">--Select a campus--</option>
+                <option value=''>--Select a campus--</option>
                 {this.props.campuses !== undefined ? (
                   this.props.campuses.map((campus, index) => (
                     <option key={index} value={campus.id}>
@@ -246,8 +237,8 @@ class SingleStudent extends Component {
 
             <div>
               <input
-                type="submit"
-                value="Submit"
+                type='submit'
+                value='Submit'
                 onClick={(e) => this.handleEditSubmit(e)}
               />
             </div>
