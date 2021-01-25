@@ -90,6 +90,7 @@ class SingleCampus extends Component {
               </div>
               <div>
                 <button
+                  className='green-btn'
                   onClick={() =>
                     this.setState({ addingStudent: !this.state.addingStudent })
                   }
@@ -100,7 +101,7 @@ class SingleCampus extends Component {
               {this.state.addingStudent === true ? (
                 <div>
                   <div>
-                    <CreateStudent />
+                    <CreateStudent showHeader={false} />
                   </div>
                   <div>
                     <button
@@ -205,13 +206,13 @@ class SingleCampus extends Component {
             </div>
 
             <div>
-              <button onClick={() => this.setState({ editing: false })}>
+              <button
+                className='normal-btn'
+                onClick={() => this.setState({ editing: false })}
+              >
                 Cancel
               </button>
-            </div>
-
-            <div>
-              <input type='submit' value='Submit' />
+              <input className='normal-btn' type='submit' value='Submit' />
             </div>
           </form>
         </div>

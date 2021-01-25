@@ -32,6 +32,7 @@ class AllCampuses extends Component {
 
         <div>
           <button
+            className='green-btn'
             onClick={() =>
               this.setState({ addingCampus: !this.state.addingCampus })
             }

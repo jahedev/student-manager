@@ -230,13 +230,14 @@ class SingleStudent extends Component {
             </div>
 
             <div>
-              <button onClick={() => this.setState({ editing: false })}>
+              <button
+                className='normal-btn'
+                onClick={() => this.setState({ editing: false })}
+              >
                 Cancel
               </button>
-            </div>
-
-            <div>
               <input
+                className='normal-btn'
                 type='submit'
                 value='Submit'
                 onClick={(e) => this.handleEditSubmit(e)}

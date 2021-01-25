@@ -1,16 +1,15 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 
-import DeleteStudent from "./DeleteStudent"
+import DeleteStudent from './DeleteStudent'
 
 class Student extends Component {
   render() {
     const { id, first, last, email, image, gpa, CampusId } = this.props
-    console.log(id, ":", first, last)
+    console.log(id, ':', first, last)
     return (
       <div>
-        <DeleteStudent id={id} CampusId={CampusId} />
         <Link to={`/singleStudent/${id}`}>
           Name: {first} {last}
         </Link>
@@ -19,6 +18,7 @@ class Student extends Component {
         {/* <p>Image: {image}</p> */}
         {/* <p>GPA: {gpa}</p> */}
         {/* <p>CampusId: {CampusId}</p> */}
+        <DeleteStudent id={id} CampusId={CampusId} />
       </div>
     )
   }
