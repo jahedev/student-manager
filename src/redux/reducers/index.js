@@ -1,5 +1,5 @@
-import axios from "axios"
-
+import axios from 'axios'
+import backend from '../../helper/backend'
 import {
   GOT_ALL_STUDENTS,
   GOT_STUDENT_BY_ID,
@@ -11,13 +11,13 @@ import {
   DELETED_CAMPUS,
   CREATED_CAMPUS,
   UPDATED_CAMPUS,
-} from "./actionTypes"
+} from './actionTypes'
 
 const initialState = {
   students: [],
-  student: "",
+  student: '',
   campuses: [],
-  campus: "",
+  campus: '',
 }
 
 // POST -> Create
@@ -32,8 +32,8 @@ const createdStudent = (data) => {
 export const createStudent = (studentInfo) => {
   return async (dispatch) => {
     try {
-      console.log("creating student with this info:", studentInfo)
-      const response = await axios.post("http://localhost:8080/api/students/", {
+      console.log('creating student with this info:', studentInfo)
+      const response = await axios.post(`${backend}/api/students/`, {
         first: studentInfo.first,
         last: studentInfo.last,
         email: studentInfo.email,
@@ -42,9 +42,9 @@ export const createStudent = (studentInfo) => {
         CampusId: studentInfo.CampusId,
       })
       console.log(
-        "************************************************************************"
+        '************************************************************************'
       )
-      console.log("axios response after creaing student:", response)
+      console.log('axios response after creaing student:', response)
       dispatch(createdStudent(response.data.student))
     } catch (error) {
       console.error(error)
@@ -62,13 +62,13 @@ const createdCampus = (data) => {
 export const createCampus = (campusInfo) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post("http://localhost:8080/api/campuses/", {
+      const response = await axios.post(`${backend}/api/campuses/`, {
         campusname: campusInfo.campusname,
         image: campusInfo.image,
         address: campusInfo.address,
         description: campusInfo.description,
       })
-      console.log("axios response after creating campus:", response)
+      console.log('axios response after creating campus:', response)
       dispatch(createdCampus(response.data.campus))
     } catch (error) {
       console.error(error)
@@ -89,8 +89,8 @@ export const getAllStudents = () => {
   return async (dispatch) => {
     try {
       // http:// resolves CORS error, thank you stack overflow
-      const response = await axios.get("http://localhost:8080/api/students/")
-      console.log("getAllStudents axios response:", response)
+      const response = await axios.get(`${backend}/api/students/`)
+      console.log('getAllStudents axios response:', response)
       dispatch(gotAllStudents(response.data.students))
     } catch (error) {
       console.error(error)
@@ -108,8 +108,8 @@ const gotAllCampuses = (data) => {
 export const getAllCampuses = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:8080/api/campuses/")
-      console.log("getAllCampuses axios response", response)
+      const response = await axios.get(`${backend}/api/campuses/`)
+      console.log('getAllCampuses axios response', response)
       dispatch(gotAllCampuses(response.data.campuses))
     } catch (error) {
       console.error(error)
@@ -130,9 +130,9 @@ export const getStudentById = (searchStudentId) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/students/${searchStudentId}`
+        `${backend}/api/students/${searchStudentId}`
       )
-      console.log("getStudentById axios response:", response)
+      console.log('getStudentById axios response:', response)
       dispatch(gotStudentById(response.data.student))
     } catch (error) {
       console.error(error)
@@ -151,9 +151,9 @@ export const getCampusById = (searchCampusId) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/campuses/${searchCampusId}`
+        `${backend}/api/campuses/${searchCampusId}`
       )
-      console.log("getCampusById axios response:", response)
+      console.log('getCampusById axios response:', response)
       dispatch(gotCampusById(response.data.campus))
     } catch (error) {
       console.error(error)
@@ -171,8 +171,8 @@ const updatedStudent = () => {
 export const updateStudent = (studentInfo) => {
   return (dispatch) => {
     try {
-      console.log("student info in updateStudent function redux:", studentInfo)
-      axios.put(`http://localhost:8080/api/students/${studentInfo.id}`, {
+      console.log('student info in updateStudent function redux:', studentInfo)
+      axios.put(`${backend}/api/students/${studentInfo.id}`, {
         first: studentInfo.first,
         last: studentInfo.last,
         email: studentInfo.email,
@@ -196,7 +196,7 @@ const updatedCampus = () => {
 export const updateCampus = (campusInfo) => {
   return (dispatch) => {
     try {
-      axios.put(`http://localhost:8080/api/campuses/${campusInfo.id}`, {
+      axios.put(`${backend}/api/campuses/${campusInfo.id}`, {
         campusname: campusInfo.campusname,
         image: campusInfo.image,
         address: campusInfo.address,
@@ -220,8 +220,8 @@ const deletedStudent = (data) => {
 export const deleteStudent = (deleteStudentId) => {
   return (dispatch) => {
     try {
-      console.log("before axios.delete call, studentId:", deleteStudentId)
-      axios.delete(`http://localhost:8080/api/students/${deleteStudentId}`)
+      console.log('before axios.delete call, studentId:', deleteStudentId)
+      axios.delete(`${backend}/api/students/${deleteStudentId}`)
       dispatch(deletedStudent())
     } catch (error) {
       console.error(error)
@@ -238,8 +238,8 @@ const deletedCampus = () => {
 export const deleteCampus = (deleteCampusId) => {
   return (dispatch) => {
     try {
-      axios.delete(`http://localhost:8080/api/campuses/${deleteCampusId}`)
-      console.log("deleteCampus id redux:", deleteCampusId)
+      axios.delete(`${backend}/api/campuses/${deleteCampusId}`)
+      console.log('deleteCampus id redux:', deleteCampusId)
       dispatch(deletedCampus())
     } catch (error) {
       console.error(error)
@@ -248,7 +248,7 @@ export const deleteCampus = (deleteCampusId) => {
 }
 
 const rootReducer = (state = initialState, action) => {
-  console.log("action in root reducer:", action)
+  console.log('action in root reducer:', action)
   switch (action.type) {
     case GOT_ALL_STUDENTS:
       return {

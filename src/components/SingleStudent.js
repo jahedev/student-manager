@@ -122,11 +122,11 @@ class SingleStudent extends Component {
           </div>
           {this.props.student !== undefined ? (
             <div>
+              <img src={this.props.student.image} className='studentImages' />
               <p>
                 Name: {this.props.student.first + ' ' + this.props.student.last}
               </p>
               <p>Email: {this.props.student.email}</p>
-              <p>Image: {this.props.student.image}</p>
               <p>GPA: {this.props.student.gpa}</p>
               <div>
                 {this.props.student.CampusId === null ? (
