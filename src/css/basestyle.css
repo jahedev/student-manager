@@ -236,3 +236,10 @@ select {
   width: 350px;
   display: inline-block;
 }
+
+.totalStudents{
+  
+  margin-right: 5%;
+  font:28px normal;
+  text-align: right;
+}

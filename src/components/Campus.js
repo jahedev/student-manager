@@ -15,8 +15,9 @@ class Campus extends Component {
         <Link to={`/singleCampus/${id}`}
          className="campusNames">{campusname}
         <p className="description">{description}</p>
-        <div>{}</div></Link>
+        </Link>
         <img src={image} className="campusImages"/>
+        <div className="totalStudents">Students: {Students.length}</div>
         {/* Requirements just want campus name and image displayed on all campuses */}
         {/* <p>Address: {address}</p> */}
         {/* <p>Description: {description}</p> */}

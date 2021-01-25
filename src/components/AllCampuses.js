@@ -64,6 +64,7 @@ class AllCampuses extends Component {
               image={campus.image}
               address={campus.address}
               description={campus.description}
+              Students={campus.Students}
             />
           ))
         ) : (
