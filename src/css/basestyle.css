@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Castoro&family=Lato&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Castoro&family=Lato&display=swap');
 
 * {
   margin: 0;
@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: Lato, Arial, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Lato, Arial, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -20,7 +20,7 @@ body {
 
 .navbar .logo {
   display: inline;
-  font-family: "Castoro", serif;
+  font-family: 'Castoro', serif;
   font-size: 1.2rem;
 }
 
@@ -57,13 +57,37 @@ a {
   transition: all 0.2s;
 }
 
-/* Non-Global Styles */
+.middle-align {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.middle-align h1,
+.middle-align h2,
+.middle-align h3 {
+  color: white;
+  filter: drop-shadow(-1px 2px 3px #1d1d1d);
+}
+
+.middle-align h1 {
+  font-size: 3rem;
+}
+.middle-align h3 {
+  font-size: 1.2rem;
+}
 
 .bg-whole {
-  display: flex;
+  display: flexbox;
   background-repeat: no-repeat;
   background-position: center center;
   background-image: url(../images/homepage.jpg);
+  background-position: center center;
   height: 100vh;
 }
 

@@ -7,6 +7,7 @@ import { getAllCampuses } from "../redux/reducers"
 
 import Campus from "./Campus"
 import CreateCampus from "./CreateCampus"
+import HalfHeaderBG from "./HalfHeaderBG"
 
 class AllCampuses extends Component {
   state = {
@@ -65,9 +66,7 @@ class AllCampuses extends Component {
     }
     return (
       <div className="container">
-        <div className="half-bg-campuses"></div>
-
-        <h1>All Campuses Component</h1>
+        <HalfHeaderBG imgdiv="half-bg-campuses" title="All Campuses" />
 
         <div>
           <button
@@ -81,7 +80,7 @@ class AllCampuses extends Component {
         </div>
         {this.state.addingCampus === true ? (
           <div>
-            <CreateCampus />
+            <CreateCampus showHeader={false} />
             <div>
               <button onClick={() => this.setState({ addingCampus: false })}>
                 Cancel Addition
