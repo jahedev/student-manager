@@ -11,6 +11,8 @@ import {
 import { Link, Redirect } from 'react-router-dom'
 import HalfHeaderBG from './HalfHeaderBG'
 
+import validateEmail from '../helper/validateEmail'
+
 class SingleStudent extends Component {
   state = {
     redirect: false,
@@ -65,6 +67,11 @@ class SingleStudent extends Component {
 
   handleEditSubmit = (e) => {
     e.preventDefault()
+
+    if (!validateEmail(this.state.studentInfo.email)) {
+      alert('That is not a valid email.')
+      return
+    }
 
     if (!this.state.studentInfo.CampusId) {
       this.setState({

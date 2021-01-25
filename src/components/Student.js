@@ -10,11 +10,11 @@ class Student extends Component {
     console.log(id, ':', first, last)
     return (
       <div className='center-text'>
-        <div>
+        <div className='imgwrapper'>
           <img alt='Student Image' src={image} className='studentImages' />
         </div>
         <Link className='student-link' to={`/singleStudent/${id}`}>
-          Name: {first} {last}
+          {first} {last}
         </Link>
         {/* Requirements just want student names displayed on all students */}
         {/* <p>Email: {email}</p> */}
