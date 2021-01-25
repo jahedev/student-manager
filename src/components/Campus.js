@@ -13,7 +13,7 @@ class Campus extends Component {
           {campusname}
           <p className="description">{description}</p>
         </Link>
-        <img src={image} className="campusImages" />
+        <img src={image} className="campusImages" alt="Campus Image" />
         <div className="totalStudents">Students: {Students.length}</div>
         {/* Requirements just want campus name and image displayed on all campuses */}
         {/* <p>Address: {address}</p> */}

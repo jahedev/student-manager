@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
 
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom"
 
-import { connect } from 'react-redux'
-import { getAllStudents } from '../redux/reducers'
+import { connect } from "react-redux"
+import { getAllStudents } from "../redux/reducers"
 
-import Student from './Student'
-import CreateStudent from './CreateStudent'
-import HalfHeaderBG from './HalfHeaderBG'
+import Student from "./Student"
+import CreateStudent from "./CreateStudent"
+import HalfHeaderBG from "./HalfHeaderBG"
 
 class AllStudents extends Component {
   state = {
@@ -27,11 +27,11 @@ class AllStudents extends Component {
 
   render() {
     return (
-      <div className='container'>
-        <HalfHeaderBG imgdiv='half-bg-students' title='All Students' />
+      <div className="container">
+        <HalfHeaderBG imgdiv="half-bg-students" title="All Students" />
         <div>
           <button
-            className='green-btn'
+            className="green-btn"
             onClick={() =>
               this.setState({ addingStudent: !this.state.addingStudent })
             }
@@ -56,7 +56,7 @@ class AllStudents extends Component {
 
         {this.props.students !== undefined ? (
           this.props.students.map((student, index) => (
-            <div className='student-container' key={index}>
+            <div className="student-container" key={index}>
               <Student
                 id={student.id}
                 first={student.first}
