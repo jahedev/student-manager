@@ -1,27 +1,27 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
 
-import { Link, Redirect } from 'react-router-dom'
+import { Link, Redirect } from "react-router-dom"
 
 import {
   createStudent,
   getCampusById,
   getStudentById,
   getAllCampuses,
-} from '../redux/reducers'
+} from "../redux/reducers"
 
-import { connect } from 'react-redux'
-import HalfHeaderBG from './HalfHeaderBG'
+import { connect } from "react-redux"
+import HalfHeaderBG from "./HalfHeaderBG"
 
 class CreateStudent extends Component {
   state = {
     redirect: false,
     studentInfo: {
-      first: '',
-      last: '',
-      email: '',
-      image: '',
-      gpa: '',
-      CampusId: '',
+      first: "",
+      last: "",
+      email: "",
+      image: "",
+      gpa: "",
+      CampusId: "",
     },
   }
 
@@ -48,20 +48,20 @@ class CreateStudent extends Component {
   }
 
   handleSubmit = (e) => {
-    console.log('CAMPUS ID IN SUBMIT FUNCT:', this.state.CampusId)
+    console.log("CAMPUS ID IN SUBMIT FUNCT:", this.state.CampusId)
     e.preventDefault()
     const { first, last, email, image, gpa, CampusId } = this.state.studentInfo
     if (!first || !last || !email || !image || !gpa) {
       console.warn(
-        'Please enter a value for all required (*) fields: studentname, email, image, gpa'
+        "Please enter a value for all required (*) fields: studentname, email, image, gpa"
       )
       return
     }
 
     // remove object property because backend won't accept empty property
-    // if (!CampusId) {
-    //   delete this.state.studentInfo.CampusId
-    // }
+    if (!CampusId) {
+      delete this.state.studentInfo.CampusId
+    }
 
     setTimeout(() => {
       this.props.createStudent(this.state.studentInfo)
@@ -83,62 +83,62 @@ class CreateStudent extends Component {
     }
 
     let HEADER = (
-      <HalfHeaderBG imgdiv='half-bg-students' title='Create A Student' />
+      <HalfHeaderBG imgdiv="half-bg-students" title="Create A Student" />
     )
-    if (this.props.showHeader === false) HEADER = ''
+    if (this.props.showHeader === false) HEADER = ""
 
     return (
-      <div className='container'>
+      <div className="container">
         {HEADER}
-        <form className='createForm' onSubmit={(e) => this.handleSubmit(e)}>
+        <form className="createForm" onSubmit={(e) => this.handleSubmit(e)}>
           <div>
             <label>First:</label>
             <input
-              type='text'
-              name='first'
+              type="text"
+              name="first"
               onChange={(e) => this.handleChange(e)}
             />
           </div>
           <div>
             <label>Last:</label>
             <input
-              type='text'
-              name='last'
+              type="text"
+              name="last"
               onChange={(e) => this.handleChange(e)}
             />
           </div>
           <div>
             <label>Email:</label>
             <input
-              type='email'
-              name='email'
+              type="email"
+              name="email"
               onChange={(e) => this.handleChange(e)}
             />
           </div>
           <div>
             <label>Image:</label>
             <input
-              type='text'
-              name='image'
+              type="text"
+              name="image"
               onChange={(e) => this.handleChange(e)}
             />
           </div>
           <div>
             <label>GPA:</label>
             <input
-              type='number'
-              step='0.01'
-              name='gpa'
+              type="number"
+              step="0.01"
+              name="gpa"
               onChange={(e) => this.handleChange(e)}
             />
           </div>
           <div>
             <label>Campus:</label>
             <select
-              name='campusSelect'
+              name="campusSelect"
               onChange={(e) => this.handleSelectChange(e)}
             >
-              <option value=''>--Select a campus--</option>
+              <option value="">--Select a campus--</option>
               {this.props.campuses !== undefined ? (
                 this.props.campuses.map((campus, index) => (
                   <option key={index} value={campus.id}>
@@ -152,7 +152,7 @@ class CreateStudent extends Component {
           </div>
           <br />
           <div>
-            <input className='btn create-btn' type='submit' value='Submit' />
+            <input className="btn create-btn" type="submit" value="Submit" />
           </div>
         </form>
       </div>
