@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
 
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom"
 
-import { connect } from 'react-redux'
-import { getAllCampuses } from '../redux/reducers'
+import { connect } from "react-redux"
+import { getAllCampuses } from "../redux/reducers"
 
-import Campus from './Campus'
-import CreateCampus from './CreateCampus'
+import Campus from "./Campus"
+import CreateCampus from "./CreateCampus"
 
 class AllCampuses extends Component {
   state = {
@@ -25,9 +25,45 @@ class AllCampuses extends Component {
   }
 
   render() {
+    if (this.props.campuses.length === 0) {
+      return (
+        <div className="container">
+          <div className="half-bg-campuses"></div>
+          <div>
+            <p>There are no campuses! Try adding one</p>
+            <div>
+              <button
+                onClick={() =>
+                  this.setState({ addingCampus: !this.state.addingCampus })
+                }
+                className="addCampusButton"
+              >
+                Add Campus
+              </button>
+            </div>
+            {this.state.addingCampus === true ? (
+              <div>
+                <CreateCampus />
+                <div>
+                  <button
+                    onClick={() => this.setState({ addingCampus: false })}
+                  >
+                    Cancel Addition
+                  </button>
+                  <br />
+                  <br />
+                </div>
+              </div>
+            ) : (
+              <br />
+            )}
+          </div>
+        </div>
+      )
+    }
     return (
-      <div className='container'>
-        <div className='half-bg-campuses'></div>
+      <div className="container">
+        <div className="half-bg-campuses"></div>
 
         <h1>All Campuses Component</h1>
 
@@ -36,7 +72,8 @@ class AllCampuses extends Component {
             onClick={() =>
               this.setState({ addingCampus: !this.state.addingCampus })
             }
-          className="addCampusButton">
+            className="addCampusButton"
+          >
             Add Campus
           </button>
         </div>
