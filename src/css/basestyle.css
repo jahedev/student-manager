@@ -145,26 +145,26 @@ select {
   height: 50vh;
 }
 
-.campusImages{
+.campusImages {
   max-width: 300px;
 }
 
-.campusNames{
+.campusNames {
   text-align: left;
   font: 35px bold;
   font-family: Arial, Helvetica, sans-serif;
   color: black;
   text-decoration: none;
   margin: 5%;
-  width:350px;
+  width: 350px;
   display: inline-block;
 }
 
-.campusNames:hover{
-  color:#be5122;
+.campusNames:hover {
+  color: #be5122;
 }
 
-.deleteCampusButton{
+.deleteCampusButton {
   font: 25px bold;
   size: 150px;
   margin-top: 15px;
@@ -184,10 +184,10 @@ select {
   margin: 5px;
   min-width: 150px;
 }
-.addCampusButton{
+.addCampusButton {
   font: 25px bold;
   size: 150px;
-   margin-top: 15px;
+  margin-top: 15px;
   background-color: #048ade;
   color: white;
   cursor: pointer;
@@ -205,28 +205,26 @@ select {
   min-width: 150px;
 }
 
-.deleteCampusButton:hover{
-  background-color: rgb(224, 103, 103)
+.deleteCampusButton:hover {
+  background-color: rgb(224, 103, 103);
 }
-.deleteCampusButton:active{
+.deleteCampusButton:active {
   background-color: #5f0909;
 }
 
-.addCampusButton:hover{
+.addCampusButton:hover {
   background-color: #5c9ec7;
 }
 
-.addCampusButton:active{
+.addCampusButton:active {
   background-color: #073a5a;
 }
 
-.campus{
+.campus {
   border-top: 3px solid rgb(223, 224, 228);
-
-  
 }
 
-.description{
+.description {
   text-align: left;
   font: 22px normal;
   font-family: Arial, Helvetica, sans-serif;
@@ -237,9 +235,14 @@ select {
   display: inline-block;
 }
 
-.totalStudents{
-  
+.totalStudents {
   margin-right: 5%;
-  font:28px normal;
+  font: 28px normal;
   text-align: right;
+}
+
+.no-campuses {
+  margin-top: 80px;
+  text-align: center;
+  font-size: 3rem;
 }

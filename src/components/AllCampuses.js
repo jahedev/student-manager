@@ -29,34 +29,36 @@ class AllCampuses extends Component {
       return (
         <div className="container">
           <div className="half-bg-campuses"></div>
-          <div>
-            <p>There are no campuses! Try adding one</p>
+          <div className="no-campuses">
             <div>
-              <button
-                onClick={() =>
-                  this.setState({ addingCampus: !this.state.addingCampus })
-                }
-                className="addCampusButton"
-              >
-                Add Campus
-              </button>
-            </div>
-            {this.state.addingCampus === true ? (
+              <p>There are no campuses! Try adding one</p>
               <div>
-                <CreateCampus />
-                <div>
-                  <button
-                    onClick={() => this.setState({ addingCampus: false })}
-                  >
-                    Cancel Addition
-                  </button>
-                  <br />
-                  <br />
-                </div>
+                <button
+                  onClick={() =>
+                    this.setState({ addingCampus: !this.state.addingCampus })
+                  }
+                  className="addCampusButton"
+                >
+                  Add Campus
+                </button>
               </div>
-            ) : (
-              <br />
-            )}
+              {this.state.addingCampus === true ? (
+                <div>
+                  <CreateCampus />
+                  <div>
+                    <button
+                      onClick={() => this.setState({ addingCampus: false })}
+                    >
+                      Cancel Addition
+                    </button>
+                    <br />
+                    <br />
+                  </div>
+                </div>
+              ) : (
+                <br />
+              )}
+            </div>
           </div>
         </div>
       )
