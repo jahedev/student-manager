@@ -1,4 +1,4 @@
-# CRUD APPLICATION
+# Student Manager - CRUD APP
 
 ## Team
 - Karim Nekzad
